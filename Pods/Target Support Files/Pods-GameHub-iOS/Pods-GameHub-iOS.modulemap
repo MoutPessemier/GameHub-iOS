@@ -1,0 +1,6 @@
+framework module Pods_GameHub_iOS {
+  umbrella header "Pods-GameHub-iOS-umbrella.h"
+
+  export *
+  module * { export * }
+}
