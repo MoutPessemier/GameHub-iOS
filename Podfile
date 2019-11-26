@@ -6,6 +6,10 @@ target 'GameHub-iOS' do
   use_frameworks!
 
   # Pods for GameHub-iOS
+  
+  # Material Components
+  pod 'MaterialComponents/Buttons'
+  pod 'MaterialComponents/Cards'
 
   target 'GameHub-iOSTests' do
     inherit! :search_paths
