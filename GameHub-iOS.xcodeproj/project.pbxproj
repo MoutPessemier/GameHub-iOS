@@ -11,7 +11,6 @@
 		471BEE28DD9396B2DE74ECAA /* Pods_GameHub_iOS_GameHub_iOSUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EA9361EB26749185FB1634F3 /* Pods_GameHub_iOS_GameHub_iOSUITests.framework */; };
 		4E7EE054238C20FC0070FC1D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E7EE053238C20FC0070FC1D /* AppDelegate.swift */; };
 		4E7EE056238C20FC0070FC1D /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E7EE055238C20FC0070FC1D /* SceneDelegate.swift */; };
-		4E7EE058238C20FC0070FC1D /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E7EE057238C20FC0070FC1D /* ViewController.swift */; };
 		4E7EE05B238C20FC0070FC1D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4E7EE059238C20FC0070FC1D /* Main.storyboard */; };
 		4E7EE05E238C20FC0070FC1D /* GameHub_iOS.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 4E7EE05C238C20FC0070FC1D /* GameHub_iOS.xcdatamodeld */; };
 		4E7EE060238C20FE0070FC1D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4E7EE05F238C20FE0070FC1D /* Assets.xcassets */; };
@@ -23,6 +22,13 @@
 		4EAC10B9238D1B8B0092D423 /* Party.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EAC10B8238D1B8B0092D423 /* Party.swift */; };
 		4EAC10BD238D1BB20092D423 /* UserRole.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EAC10BC238D1BB20092D423 /* UserRole.swift */; };
 		4EAC10BF238D1BE10092D423 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EAC10BE238D1BE10092D423 /* User.swift */; };
+		4EAC10C2238D29520092D423 /* CardStackViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EAC10C1238D29520092D423 /* CardStackViewController.swift */; };
+		4EAC10C5238D2DB10092D423 /* PartyTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EAC10C3238D2DB10092D423 /* PartyTableViewCell.swift */; };
+		4EAC10C6238D2DB10092D423 /* PartyTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4EAC10C4238D2DB10092D423 /* PartyTableViewCell.xib */; };
+		4EAC10C8238D31B00092D423 /* PartyCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EAC10C7238D31B00092D423 /* PartyCard.swift */; };
+		4EAC10CA238D32730092D423 /* FAB.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EAC10C9238D32730092D423 /* FAB.swift */; };
+		4EC71AD12392BB3C00F2FA1A /* Auth0.plist in Resources */ = {isa = PBXBuildFile; fileRef = 4EC71AD02392BB3C00F2FA1A /* Auth0.plist */; };
+		4EC71AD32392BEB200F2FA1A /* AuthenticationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EC71AD22392BEB200F2FA1A /* AuthenticationViewController.swift */; };
 		72061261DC51E0367A19F272 /* Pods_GameHub_iOSTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 78E6BE7CCAD36CC2847CD229 /* Pods_GameHub_iOSTests.framework */; };
 /* End PBXBuildFile section */
 
@@ -49,7 +55,6 @@
 		4E7EE050238C20FC0070FC1D /* GameHub-iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "GameHub-iOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		4E7EE053238C20FC0070FC1D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4E7EE055238C20FC0070FC1D /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		4E7EE057238C20FC0070FC1D /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		4E7EE05A238C20FC0070FC1D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		4E7EE05D238C20FC0070FC1D /* GameHub_iOS.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = GameHub_iOS.xcdatamodel; sourceTree = "<group>"; };
 		4E7EE05F238C20FE0070FC1D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -66,6 +71,13 @@
 		4EAC10B8238D1B8B0092D423 /* Party.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Party.swift; sourceTree = "<group>"; };
 		4EAC10BC238D1BB20092D423 /* UserRole.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserRole.swift; sourceTree = "<group>"; };
 		4EAC10BE238D1BE10092D423 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		4EAC10C1238D29520092D423 /* CardStackViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardStackViewController.swift; sourceTree = "<group>"; };
+		4EAC10C3238D2DB10092D423 /* PartyTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PartyTableViewCell.swift; sourceTree = "<group>"; };
+		4EAC10C4238D2DB10092D423 /* PartyTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PartyTableViewCell.xib; sourceTree = "<group>"; };
+		4EAC10C7238D31B00092D423 /* PartyCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PartyCard.swift; sourceTree = "<group>"; };
+		4EAC10C9238D32730092D423 /* FAB.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FAB.swift; sourceTree = "<group>"; };
+		4EC71AD02392BB3C00F2FA1A /* Auth0.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Auth0.plist; sourceTree = "<group>"; };
+		4EC71AD22392BEB200F2FA1A /* AuthenticationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationViewController.swift; sourceTree = "<group>"; };
 		5F2944EE841873EEC5F3114D /* Pods-GameHub-iOS-GameHub-iOSUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GameHub-iOS-GameHub-iOSUITests.debug.xcconfig"; path = "Target Support Files/Pods-GameHub-iOS-GameHub-iOSUITests/Pods-GameHub-iOS-GameHub-iOSUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		78E6BE7CCAD36CC2847CD229 /* Pods_GameHub_iOSTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_GameHub_iOSTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7C795B457DBD893D9AE70AA4 /* Pods-GameHub-iOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GameHub-iOS.debug.xcconfig"; path = "Target Support Files/Pods-GameHub-iOS/Pods-GameHub-iOS.debug.xcconfig"; sourceTree = "<group>"; };
@@ -128,18 +140,18 @@
 		4E7EE052238C20FC0070FC1D /* GameHub-iOS */ = {
 			isa = PBXGroup;
 			children = (
+				4EAC10C0238D290F0092D423 /*  ViewControllers */,
 				4EAC10B3238D19D10092D423 /* Network */,
 				4EAC10B2238D198F0092D423 /* Domain */,
-				4EAC10B1238D19870092D423 /* ViewModels */,
 				4EAC10B0238D197F0092D423 /* Views */,
 				4E7EE053238C20FC0070FC1D /* AppDelegate.swift */,
 				4E7EE055238C20FC0070FC1D /* SceneDelegate.swift */,
-				4E7EE057238C20FC0070FC1D /* ViewController.swift */,
 				4E7EE059238C20FC0070FC1D /* Main.storyboard */,
 				4E7EE05F238C20FE0070FC1D /* Assets.xcassets */,
 				4E7EE061238C20FE0070FC1D /* LaunchScreen.storyboard */,
 				4E7EE064238C20FE0070FC1D /* Info.plist */,
 				4E7EE05C238C20FC0070FC1D /* GameHub_iOS.xcdatamodeld */,
+				4EC71AD02392BB3C00F2FA1A /* Auth0.plist */,
 			);
 			path = "GameHub-iOS";
 			sourceTree = "<group>";
@@ -165,15 +177,12 @@
 		4EAC10B0238D197F0092D423 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				4EAC10C3238D2DB10092D423 /* PartyTableViewCell.swift */,
+				4EAC10C4238D2DB10092D423 /* PartyTableViewCell.xib */,
+				4EAC10C7238D31B00092D423 /* PartyCard.swift */,
+				4EAC10C9238D32730092D423 /* FAB.swift */,
 			);
 			path = Views;
-			sourceTree = "<group>";
-		};
-		4EAC10B1238D19870092D423 /* ViewModels */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = ViewModels;
 			sourceTree = "<group>";
 		};
 		4EAC10B2238D198F0092D423 /* Domain */ = {
@@ -193,6 +202,15 @@
 			children = (
 			);
 			path = Network;
+			sourceTree = "<group>";
+		};
+		4EAC10C0238D290F0092D423 /*  ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				4EAC10C1238D29520092D423 /* CardStackViewController.swift */,
+				4EC71AD22392BEB200F2FA1A /* AuthenticationViewController.swift */,
+			);
+			path = " ViewControllers";
 			sourceTree = "<group>";
 		};
 		7743DA11530BB65161ABFCA5 /* Frameworks */ = {
@@ -327,8 +345,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4EC71AD12392BB3C00F2FA1A /* Auth0.plist in Resources */,
 				4E7EE063238C20FE0070FC1D /* LaunchScreen.storyboard in Resources */,
 				4E7EE060238C20FE0070FC1D /* Assets.xcassets in Resources */,
+				4EAC10C6238D2DB10092D423 /* PartyTableViewCell.xib in Resources */,
 				4E7EE05B238C20FC0070FC1D /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -457,14 +477,18 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4E7EE058238C20FC0070FC1D /* ViewController.swift in Sources */,
 				4EAC10B5238D1AFF0092D423 /* Game.swift in Sources */,
 				4EAC10BD238D1BB20092D423 /* UserRole.swift in Sources */,
 				4E7EE054238C20FC0070FC1D /* AppDelegate.swift in Sources */,
 				4EAC10B9238D1B8B0092D423 /* Party.swift in Sources */,
+				4EAC10C5238D2DB10092D423 /* PartyTableViewCell.swift in Sources */,
+				4EAC10CA238D32730092D423 /* FAB.swift in Sources */,
 				4EAC10BF238D1BE10092D423 /* User.swift in Sources */,
 				4EAC10B7238D1B310092D423 /* GameTypes.swift in Sources */,
 				4E7EE056238C20FC0070FC1D /* SceneDelegate.swift in Sources */,
+				4EAC10C8238D31B00092D423 /* PartyCard.swift in Sources */,
+				4EC71AD32392BEB200F2FA1A /* AuthenticationViewController.swift in Sources */,
+				4EAC10C2238D29520092D423 /* CardStackViewController.swift in Sources */,
 				4E7EE05E238C20FC0070FC1D /* GameHub_iOS.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

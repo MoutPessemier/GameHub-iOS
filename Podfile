@@ -10,6 +10,9 @@ target 'GameHub-iOS' do
   # Material Components
   pod 'MaterialComponents/Buttons'
   pod 'MaterialComponents/Cards'
+  
+  # Auth0
+  pod 'Auth0', '~> 1.19'
 
   target 'GameHub-iOSTests' do
     inherit! :search_paths

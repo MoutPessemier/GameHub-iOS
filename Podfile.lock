@@ -1,4 +1,6 @@
 PODS:
+  - Auth0 (1.19.3):
+    - SimpleKeychain
   - MaterialComponents/AnimationTiming (94.1.0)
   - MaterialComponents/Buttons (94.1.0):
     - MaterialComponents/Elevation
@@ -47,22 +49,28 @@ PODS:
     - MaterialComponents/private/Math
   - MDFInternationalization (2.0.0)
   - MDFTextAccessibility (2.0.0)
+  - SimpleKeychain (0.9.0)
 
 DEPENDENCIES:
+  - Auth0 (~> 1.19)
   - MaterialComponents/Buttons
   - MaterialComponents/Cards
 
 SPEC REPOS:
   trunk:
+    - Auth0
     - MaterialComponents
     - MDFInternationalization
     - MDFTextAccessibility
+    - SimpleKeychain
 
 SPEC CHECKSUMS:
+  Auth0: 195ea089de471c72bf95eb5320ff86c224debf3c
   MaterialComponents: c00d0dac9a2cbb05ddfa1614711c9dad7620b8f7
   MDFInternationalization: 010097556d6b09d2c4ea38e0820ea6d37be6a314
   MDFTextAccessibility: 85c09a1bd9c321f494348e632a25063bcda35a53
+  SimpleKeychain: 3be49072fd2d82de8fa83d847ef1e548622f8fc5
 
-PODFILE CHECKSUM: 90528f79de27f3aebf5233c5d28c5440be33f1ce
+PODFILE CHECKSUM: 7c9de2275d3f45a8ed83c80a7551458b6f6e9127
 
 COCOAPODS: 1.8.4
