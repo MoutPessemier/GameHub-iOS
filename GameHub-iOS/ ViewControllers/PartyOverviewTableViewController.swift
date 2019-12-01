@@ -86,5 +86,13 @@ class PartyOverviewTableViewController: UITableViewController {
         // Pass the selected object to the new view controller.
     }
     */
+    
+    override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
+        return .portrait
+    }
+
+//    override func shouldAutorotate() -> Bool {
+//        return false
+//    }
 
 }

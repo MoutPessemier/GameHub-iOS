@@ -7,6 +7,22 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
+        <!--Map-->
+        <scene sceneID="kKI-e0-zWs">
+            <objects>
+                <viewController title="Map" id="z7D-VA-aHb" customClass="MapViewController" customModule="GameHub_iOS" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="g1y-3U-CKY">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <viewLayoutGuide key="safeArea" id="HQr-GU-DSm"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Map" image="map" catalog="system" id="cXV-c5-Jpi"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="faU-I9-Qgo" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1048" y="-579"/>
+        </scene>
         <!--CardStackView-->
         <scene sceneID="tne-QT-ifu">
             <objects>
@@ -96,6 +112,7 @@
                     <connections>
                         <segue destination="BYZ-38-t0r" kind="relationship" relationship="viewControllers" id="Vno-Or-49r"/>
                         <segue destination="EXw-VU-m93" kind="relationship" relationship="viewControllers" id="dXc-RK-oIl"/>
+                        <segue destination="z7D-VA-aHb" kind="relationship" relationship="viewControllers" id="0NR-MW-ffh"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Nrq-d3-eDO" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -106,5 +123,6 @@
     <resources>
         <image name="house" catalog="system" width="64" height="54"/>
         <image name="list.dash" catalog="system" width="64" height="44"/>
+        <image name="map" catalog="system" width="64" height="58"/>
     </resources>
 </document>

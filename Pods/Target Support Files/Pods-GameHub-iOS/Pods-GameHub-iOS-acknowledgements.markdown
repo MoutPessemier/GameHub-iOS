@@ -27,6 +27,10 @@ SOFTWARE.
 
 
 
+## GoogleMaps
+
+Copyright 2019 Google
+
 ## MDFInternationalization
 
 

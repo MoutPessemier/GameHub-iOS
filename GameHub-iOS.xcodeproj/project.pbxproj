@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		21F200BE198662C9BEA7772E /* Pods_GameHub_iOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C7EFCCA634CBB77CC5A4EC2B /* Pods_GameHub_iOS.framework */; };
 		471BEE28DD9396B2DE74ECAA /* Pods_GameHub_iOS_GameHub_iOSUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EA9361EB26749185FB1634F3 /* Pods_GameHub_iOS_GameHub_iOSUITests.framework */; };
+		4E48CC572393B6FD009680DD /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E48CC562393B6FD009680DD /* MapViewController.swift */; };
 		4E7EE054238C20FC0070FC1D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E7EE053238C20FC0070FC1D /* AppDelegate.swift */; };
 		4E7EE056238C20FC0070FC1D /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E7EE055238C20FC0070FC1D /* SceneDelegate.swift */; };
 		4E7EE05B238C20FC0070FC1D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4E7EE059238C20FC0070FC1D /* Main.storyboard */; };
@@ -57,6 +58,7 @@
 /* Begin PBXFileReference section */
 		03CA9DE0440D134B4365C9BF /* Pods-GameHub-iOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GameHub-iOS.release.xcconfig"; path = "Target Support Files/Pods-GameHub-iOS/Pods-GameHub-iOS.release.xcconfig"; sourceTree = "<group>"; };
 		3364BE83858D84A09431AED2 /* Pods-GameHub-iOSTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GameHub-iOSTests.release.xcconfig"; path = "Target Support Files/Pods-GameHub-iOSTests/Pods-GameHub-iOSTests.release.xcconfig"; sourceTree = "<group>"; };
+		4E48CC562393B6FD009680DD /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		4E7EE050238C20FC0070FC1D /* GameHub-iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "GameHub-iOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		4E7EE053238C20FC0070FC1D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4E7EE055238C20FC0070FC1D /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -224,6 +226,7 @@
 				4EAC10C1238D29520092D423 /* CardStackViewController.swift */,
 				4EC71AD22392BEB200F2FA1A /* AuthenticationViewController.swift */,
 				4EC71AD42392C79700F2FA1A /* PartyOverviewTableViewController.swift */,
+				4E48CC562393B6FD009680DD /* MapViewController.swift */,
 			);
 			path = " ViewControllers";
 			sourceTree = "<group>";
@@ -263,6 +266,7 @@
 				4E7EE04D238C20FC0070FC1D /* Frameworks */,
 				4E7EE04E238C20FC0070FC1D /* Resources */,
 				2628C9889A64415390B6CE47 /* [CP] Embed Pods Frameworks */,
+				C869CEFB4EC02E0202109A5D /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -301,6 +305,7 @@
 				4E7EE071238C20FE0070FC1D /* Frameworks */,
 				4E7EE072238C20FE0070FC1D /* Resources */,
 				7B13D70136CCEC9ADA30F40C /* [CP] Embed Pods Frameworks */,
+				A7FCE32C5941A898881703AE /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -463,6 +468,40 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
+		A7FCE32C5941A898881703AE /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-GameHub-iOS-GameHub-iOSUITests/Pods-GameHub-iOS-GameHub-iOSUITests-resources-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-GameHub-iOS-GameHub-iOSUITests/Pods-GameHub-iOS-GameHub-iOSUITests-resources-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-GameHub-iOS-GameHub-iOSUITests/Pods-GameHub-iOS-GameHub-iOSUITests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		C869CEFB4EC02E0202109A5D /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-GameHub-iOS/Pods-GameHub-iOS-resources-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-GameHub-iOS/Pods-GameHub-iOS-resources-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-GameHub-iOS/Pods-GameHub-iOS-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		F9C178F11DE51B2A761405AC /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -499,6 +538,7 @@
 				4EC71ADD2393163C00F2FA1A /* Location.swift in Sources */,
 				4E7EE054238C20FC0070FC1D /* AppDelegate.swift in Sources */,
 				4EAC10B9238D1B8B0092D423 /* Party.swift in Sources */,
+				4E48CC572393B6FD009680DD /* MapViewController.swift in Sources */,
 				4EC71ADB2393131000F2FA1A /* PartiesNetworkContainer.swift in Sources */,
 				4EAC10C5238D2DB10092D423 /* PartyTableViewCell.swift in Sources */,
 				4EAC10CA238D32730092D423 /* FAB.swift in Sources */,

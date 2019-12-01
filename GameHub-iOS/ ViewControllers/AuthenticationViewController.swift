@@ -66,6 +66,14 @@ class AuthenticationViewController: UIViewController {
         self.present(alert, animated: true, completion: nil)
     }
     
+    override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
+        return .portrait
+    }
+
+//    override func shouldAutorotate() -> Bool {
+//        return false
+//    }
+    
 }
 
 func plistValues(bundle: Bundle) -> (clientId: String, domain: String)? {

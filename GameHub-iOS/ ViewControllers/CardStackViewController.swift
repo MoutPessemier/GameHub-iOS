@@ -8,8 +8,10 @@
 
 import UIKit
 import Auth0
+import MapKit
+import CoreLocation
 
-class CardStackViewController: UIViewController {
+class CardStackViewController: UIViewController, CLLocationManagerDelegate {
     
     private var networkManager: NetworkManager = NetworkManager()
     private var games: [Game] = []
@@ -18,10 +20,26 @@ class CardStackViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        let locationManager = CLLocationManager()
+        locationManager.requestWhenInUseAuthorization()
+        if CLLocationManager.locationServicesEnabled() {
+            locationManager.delegate = self
+            locationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters
+            locationManager.startUpdatingLocation()
+        }
+        
         games = networkManager.getGames()
         parties = networkManager.getPartiesNearYou(maxDistance: 10, userId: "5db8838eaffe445c66076a89", latitude: 51.05, longitude: 3.72)
         user = networkManager.getUser(email: "moutpessemier@hotmail.com")
     }
+    
+    override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
+        return .portrait
+    }
+    
+//    override var shouldAutorotate: Bool {
+//        return true
+//    }
     
 
     /*
@@ -33,5 +51,11 @@ class CardStackViewController: UIViewController {
         // Pass the selected object to the new view controller.
     }
     */
+    
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        print("test")
+        guard let locValue: CLLocationCoordinate2D = manager.location?.coordinate else { return }
+        print("locations = \(locValue.latitude) \(locValue.longitude)")
+    }
 
 }

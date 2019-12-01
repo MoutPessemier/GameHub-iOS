@@ -13,6 +13,9 @@ target 'GameHub-iOS' do
   
   # Auth0
   pod 'Auth0', '~> 1.19'
+  
+  # Google Maps
+  pod 'GoogleMaps'
 
   target 'GameHub-iOSTests' do
     inherit! :search_paths
