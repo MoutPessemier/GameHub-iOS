@@ -12,7 +12,7 @@
             <objects>
                 <viewController title="CardStackView" id="BYZ-38-t0r" customClass="CardStackViewController" customModule="GameHub_iOS" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
@@ -26,13 +26,13 @@
         <!--Party Overview-->
         <scene sceneID="heg-GG-bOf">
             <objects>
-                <tableViewController id="EXw-VU-m93" sceneMemberID="viewController">
+                <tableViewController id="EXw-VU-m93" customClass="PartyOverviewTableViewController" customModule="GameHub_iOS" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="hkf-ct-7UF">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="bj7-OO-Dg6">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="bj7-OO-Dg6" customClass="PartyTableViewCell" customModule="GameHub_iOS" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="28" width="414" height="43.5"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="bj7-OO-Dg6" id="UVh-dT-z0r">
@@ -65,7 +65,6 @@
                                 <state key="normal" title="Log In / Sign Up"/>
                                 <connections>
                                     <action selector="showLogin:" destination="l8U-0f-O1G" eventType="touchUpInside" id="eOd-uE-c0G"/>
-                                    <segue destination="enX-XB-Qbr" kind="show" id="JYI-2X-d5q"/>
                                 </connections>
                             </button>
                         </subviews>

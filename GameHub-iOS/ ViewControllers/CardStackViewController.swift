@@ -10,9 +10,17 @@ import UIKit
 import Auth0
 
 class CardStackViewController: UIViewController {
-
+    
+    private var networkManager: NetworkManager = NetworkManager()
+    private var games: [Game] = []
+    private var parties: [Party] = []
+    private var user: User? = nil
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        games = networkManager.getGames()
+        parties = networkManager.getPartiesNearYou(maxDistance: 10, userId: "5db8838eaffe445c66076a89", latitude: 51.05, longitude: 3.72)
+        user = networkManager.getUser(email: "moutpessemier@hotmail.com")
     }
     
 

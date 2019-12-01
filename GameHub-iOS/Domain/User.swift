@@ -10,12 +10,12 @@ import Foundation
 
 public struct User: Codable {
     
-    var id: String?
+    var _id: String?
     var email: String
     var maxDistance: Int
     
-    init(id: String?, email: String, maxDistance: Int) {
-        self.id = id
+    init(id _id: String?, email: String, maxDistance: Int) {
+        self._id = _id
         self.email = email
         self.maxDistance = maxDistance
     }
