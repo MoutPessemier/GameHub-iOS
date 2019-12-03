@@ -10,52 +10,76 @@ import UIKit
 import Auth0
 import MapKit
 import CoreLocation
+import Lottie
+import Loaf
 
-class CardStackViewController: UIViewController, CLLocationManagerDelegate {
-    
+class CardStackViewController: UIViewController, CLLocationManagerDelegate, NetworkManagerDelegate {
+    private static var amountVisited: Int = 0
     private var networkManager: NetworkManager = NetworkManager()
     private var games: [Game] = []
     private var parties: [Party] = []
     private var user: User? = nil
+    private let locationManager = CLLocationManager()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        let locationManager = CLLocationManager()
-        locationManager.requestWhenInUseAuthorization()
-        if CLLocationManager.locationServicesEnabled() {
-            locationManager.delegate = self
-            locationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters
-            locationManager.startUpdatingLocation()
-        }
-        
-        games = networkManager.getGames()
-        parties = networkManager.getPartiesNearYou(maxDistance: 10, userId: "5db8838eaffe445c66076a89", latitude: 51.05, longitude: 3.72)
-        user = networkManager.getUser(email: "moutpessemier@hotmail.com")
+        networkManager.delegate = self
+        networkManager.getGames()
+        networkManager.getUser(email: "moutpessemier@hotmail.com")
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+//        if CardStackViewController.amountVisited == 0 {
+//            Loaf("Successful login", state: .success, location: .bottom, presentingDirection: .vertical, dismissingDirection: .vertical, sender: self).show()
+//            CardStackViewController.amountVisited += 1
+//        }
+        getCurrentLocation()
     }
     
     override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
         return .portrait
     }
     
-//    override var shouldAutorotate: Bool {
-//        return true
-//    }
+    //MARK: - Location
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    func getCurrentLocation() {
+        locationManager.requestWhenInUseAuthorization()
+        if CLLocationManager.locationServicesEnabled() {
+            locationManager.delegate = self
+            locationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters
+            locationManager.startUpdatingLocation()
+        }
     }
-    */
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        print("test")
         guard let locValue: CLLocationCoordinate2D = manager.location?.coordinate else { return }
-        print("locations = \(locValue.latitude) \(locValue.longitude)")
+        //networkManager.getPartiesNearYou(maxDistance: 10, userId: "5db8838eaffe445c66076a89", latitude: locValue.latitude, longitude: locValue.longitude)
+        // mock request
+        networkManager.getPartiesNearYou(maxDistance: 10, userId: "5db8838eaffe445c66076a89", latitude: 50.92, longitude: 4.06)
     }
-
+    
+    func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
+    }
+    
+    // MARK: - NetworkDelegate
+    func updateGames(_ networkManager: NetworkManager, _ games: [Game]) {
+        self.games = games
+    }
+    
+    func updateParties(_ networkManager: NetworkManager, _ parties: [Party]) {
+        self.parties = parties
+    }
+    
+    func updateUser(_ networkManager: NetworkManager, _ user: User) {
+        self.user = user
+    }
+    
+    func didFail(with error: Error) {
+//        let errorAnimationView = AnimationView(filePath: "error.json")
+//        errorAnimationView.play()
+        print("---ERROR---", error.localizedDescription)
+    }
+    
 }
+

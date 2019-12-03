@@ -8,66 +8,90 @@
 
 import Foundation
 
+protocol NetworkManagerDelegate {
+    func updateGames(_ networkManager: NetworkManager, _ games: [Game])
+    func updateParties(_ networkManager: NetworkManager, _ parties: [Party])
+    func updateUser(_ networkManager: NetworkManager, _ user: User)
+    func didFail(with error: Error)
+}
+
 struct NetworkManager {
     let url = "https://game-hub-backend.herokuapp.com/"
     
+    var delegate: NetworkManagerDelegate?
+    
     // MARK: - Games
-    func getGames() -> [Game] {
+    func getGames() {
         let urlString = "\(url)games"
-        var games: [Game] = []
-        performRequest(urlString: urlString) {data, response, error in
+        performRequest(with: urlString) {data, response, error in
             if error != nil {
-                print(error!)
+                self.delegate?.didFail(with: error!)
                 return
             }
             
             if let safeData = data {
                 let decoder = JSONDecoder()
                 do {
-                    let decodedGames = try decoder.decode(GamesNetworkContainer.self, from: safeData)
-                    games = decodedGames.games
+                    let decodedContainer = try decoder.decode(GamesNetworkContainer.self, from: safeData)
+                    self.delegate?.updateGames(self, decodedContainer.games)
                 } catch {
-                    print(error)
+                    self.delegate?.didFail(with: error)
                 }
             }
         }
-        // is empty, why?
-        return games
     }
     
     // MARK: - Parties
     
-    func getPartiesNearYou(maxDistance: Int, userId: String, latitude: Double, longitude: Double) -> [Party] {
+    func getPartiesNearYou(maxDistance: Int, userId: String, latitude: Double, longitude: Double) {
         let urlString = "\(url)getPartiesNearYou?distance=\(maxDistance)&lat=\(latitude)&long=\(longitude)&userId=\(userId)"
-        var parties: [Party] = []
-        performRequest(urlString: urlString) {data, response, error in
+        print("URL", urlString)
+        performRequest(with: urlString) {data, response, error in
             if error != nil {
-                print(error!)
+                self.delegate?.didFail(with: error!)
+                return
+            }
+            
+            if let safeData = data {
+                let decoder = JSONDecoder()
+                    decoder.dateDecodingStrategy = .iso8601
+                do {
+                    let decodedContainer = try decoder.decode(PartiesNetworkContainer.self, from: safeData)
+                    self.delegate?.updateParties(self, decodedContainer.parties)
+                } catch {
+                    self.delegate?.didFail(with: error)
+                }
+            }
+        }
+    }
+    
+    func getJoinedParties(userId: String) {
+        let urlString = "\(url)getJoinedParties?userId=\(userId)"
+        performRequest(with: urlString) { (data, response, error) in
+            if error != nil {
+                self.delegate?.didFail(with: error!)
                 return
             }
             
             if let safeData = data {
                 let decoder = JSONDecoder()
                 do {
-                    let decodedParties = try decoder.decode(PartiesNetworkContainer.self, from: safeData)
-                    parties = decodedParties.parties
+                    let decodedContainer = try decoder.decode(PartiesNetworkContainer.self, from: safeData)
+                    self.delegate?.updateParties(self, decodedContainer.parties)
                 } catch {
-                    print(error)
+                    self.delegate?.didFail(with: error)
                 }
             }
         }
-        // is empty, why?
-        return parties
     }
     
     // MARK: - User
     
-    func getUser(email: String) -> User? {
+    func getUser(email: String) {
         let urlString = "\(url)getUserByEmail?email=\(email)"
-        var user: User? = nil
-        performRequest(urlString: urlString) { data, response, error in
+        performRequest(with: urlString) { data, response, error in
             if error != nil {
-                print(error!)
+                self.delegate?.didFail(with: error!)
                 return
             }
             
@@ -75,17 +99,15 @@ struct NetworkManager {
                 let decoder = JSONDecoder()
                 do {
                     let decodedUser = try decoder.decode(User.self, from: safeData)
-                    user = decodedUser
+                    self.delegate?.updateUser(self, decodedUser)
                 } catch {
-                    print(error)
+                    self.delegate?.didFail(with: error)
                 }
             }
         }
-        
-        return user
     }
     
-    private func performRequest(urlString: String, onCompletionCallback: @escaping (Data?, URLResponse?, Error?) -> Void) {
+    private func performRequest(with urlString: String, onCompletionCallback: @escaping (Data?, URLResponse?, Error?) -> Void) {
         if let url = URL(string: urlString) {
             let session = URLSession(configuration: .default)
             let task = session.dataTask(with: url, completionHandler: onCompletionCallback)

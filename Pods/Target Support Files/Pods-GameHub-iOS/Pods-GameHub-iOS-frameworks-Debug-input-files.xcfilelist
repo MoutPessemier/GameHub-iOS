@@ -1,6 +1,5 @@
 ${PODS_ROOT}/Target Support Files/Pods-GameHub-iOS/Pods-GameHub-iOS-frameworks.sh
 ${BUILT_PRODUCTS_DIR}/Auth0/Auth0.framework
-${BUILT_PRODUCTS_DIR}/MDFInternationalization/MDFInternationalization.framework
-${BUILT_PRODUCTS_DIR}/MDFTextAccessibility/MDFTextAccessibility.framework
-${BUILT_PRODUCTS_DIR}/MaterialComponents/MaterialComponents.framework
+${BUILT_PRODUCTS_DIR}/Loaf/Loaf.framework
 ${BUILT_PRODUCTS_DIR}/SimpleKeychain/SimpleKeychain.framework
+${BUILT_PRODUCTS_DIR}/lottie-ios/Lottie.framework

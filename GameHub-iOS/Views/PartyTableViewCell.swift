@@ -10,15 +10,16 @@ import UIKit
 
 class PartyTableViewCell: UITableViewCell {
 
+    @IBOutlet var partyName: UILabel!
+    @IBOutlet var partyDate: UILabel!
+    @IBOutlet var gameName: UILabel!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
     }
     
 }

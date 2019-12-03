@@ -26,15 +26,14 @@
 		4EAC10C2238D29520092D423 /* CardStackViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EAC10C1238D29520092D423 /* CardStackViewController.swift */; };
 		4EAC10C5238D2DB10092D423 /* PartyTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EAC10C3238D2DB10092D423 /* PartyTableViewCell.swift */; };
 		4EAC10C6238D2DB10092D423 /* PartyTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4EAC10C4238D2DB10092D423 /* PartyTableViewCell.xib */; };
-		4EAC10C8238D31B00092D423 /* PartyCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EAC10C7238D31B00092D423 /* PartyCard.swift */; };
-		4EAC10CA238D32730092D423 /* FAB.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EAC10C9238D32730092D423 /* FAB.swift */; };
 		4EC71AD12392BB3C00F2FA1A /* Auth0.plist in Resources */ = {isa = PBXBuildFile; fileRef = 4EC71AD02392BB3C00F2FA1A /* Auth0.plist */; };
 		4EC71AD32392BEB200F2FA1A /* AuthenticationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EC71AD22392BEB200F2FA1A /* AuthenticationViewController.swift */; };
-		4EC71AD52392C79700F2FA1A /* PartyOverviewTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EC71AD42392C79700F2FA1A /* PartyOverviewTableViewController.swift */; };
+		4EC71AD52392C79700F2FA1A /* PartyOverviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EC71AD42392C79700F2FA1A /* PartyOverviewViewController.swift */; };
 		4EC71AD72392E2F400F2FA1A /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EC71AD62392E2F400F2FA1A /* NetworkManager.swift */; };
 		4EC71AD92392FFE000F2FA1A /* GamesNetworkContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EC71AD82392FFE000F2FA1A /* GamesNetworkContainer.swift */; };
 		4EC71ADB2393131000F2FA1A /* PartiesNetworkContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EC71ADA2393131000F2FA1A /* PartiesNetworkContainer.swift */; };
 		4EC71ADD2393163C00F2FA1A /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EC71ADC2393163C00F2FA1A /* Location.swift */; };
+		4ED7B1D42395D9FC004F62D2 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ED7B1D32395D9FC004F62D2 /* SettingsViewController.swift */; };
 		72061261DC51E0367A19F272 /* Pods_GameHub_iOSTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 78E6BE7CCAD36CC2847CD229 /* Pods_GameHub_iOSTests.framework */; };
 /* End PBXBuildFile section */
 
@@ -81,15 +80,14 @@
 		4EAC10C1238D29520092D423 /* CardStackViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardStackViewController.swift; sourceTree = "<group>"; };
 		4EAC10C3238D2DB10092D423 /* PartyTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PartyTableViewCell.swift; sourceTree = "<group>"; };
 		4EAC10C4238D2DB10092D423 /* PartyTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PartyTableViewCell.xib; sourceTree = "<group>"; };
-		4EAC10C7238D31B00092D423 /* PartyCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PartyCard.swift; sourceTree = "<group>"; };
-		4EAC10C9238D32730092D423 /* FAB.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FAB.swift; sourceTree = "<group>"; };
 		4EC71AD02392BB3C00F2FA1A /* Auth0.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Auth0.plist; sourceTree = "<group>"; };
 		4EC71AD22392BEB200F2FA1A /* AuthenticationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationViewController.swift; sourceTree = "<group>"; };
-		4EC71AD42392C79700F2FA1A /* PartyOverviewTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PartyOverviewTableViewController.swift; sourceTree = "<group>"; };
+		4EC71AD42392C79700F2FA1A /* PartyOverviewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PartyOverviewViewController.swift; sourceTree = "<group>"; };
 		4EC71AD62392E2F400F2FA1A /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		4EC71AD82392FFE000F2FA1A /* GamesNetworkContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GamesNetworkContainer.swift; sourceTree = "<group>"; };
 		4EC71ADA2393131000F2FA1A /* PartiesNetworkContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PartiesNetworkContainer.swift; sourceTree = "<group>"; };
 		4EC71ADC2393163C00F2FA1A /* Location.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Location.swift; sourceTree = "<group>"; };
+		4ED7B1D32395D9FC004F62D2 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		5F2944EE841873EEC5F3114D /* Pods-GameHub-iOS-GameHub-iOSUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GameHub-iOS-GameHub-iOSUITests.debug.xcconfig"; path = "Target Support Files/Pods-GameHub-iOS-GameHub-iOSUITests/Pods-GameHub-iOS-GameHub-iOSUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		78E6BE7CCAD36CC2847CD229 /* Pods_GameHub_iOSTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_GameHub_iOSTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7C795B457DBD893D9AE70AA4 /* Pods-GameHub-iOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GameHub-iOS.debug.xcconfig"; path = "Target Support Files/Pods-GameHub-iOS/Pods-GameHub-iOS.debug.xcconfig"; sourceTree = "<group>"; };
@@ -127,6 +125,13 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		4E48CC582393F250009680DD /* Animations */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Animations;
+			sourceTree = "<group>";
+		};
 		4E7EE047238C20FC0070FC1D = {
 			isa = PBXGroup;
 			children = (
@@ -152,6 +157,7 @@
 		4E7EE052238C20FC0070FC1D /* GameHub-iOS */ = {
 			isa = PBXGroup;
 			children = (
+				4E48CC582393F250009680DD /* Animations */,
 				4EAC10C0238D290F0092D423 /*  ViewControllers */,
 				4EAC10B3238D19D10092D423 /* Network */,
 				4EAC10B2238D198F0092D423 /* Domain */,
@@ -191,8 +197,6 @@
 			children = (
 				4EAC10C3238D2DB10092D423 /* PartyTableViewCell.swift */,
 				4EAC10C4238D2DB10092D423 /* PartyTableViewCell.xib */,
-				4EAC10C7238D31B00092D423 /* PartyCard.swift */,
-				4EAC10C9238D32730092D423 /* FAB.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -225,8 +229,9 @@
 			children = (
 				4EAC10C1238D29520092D423 /* CardStackViewController.swift */,
 				4EC71AD22392BEB200F2FA1A /* AuthenticationViewController.swift */,
-				4EC71AD42392C79700F2FA1A /* PartyOverviewTableViewController.swift */,
+				4EC71AD42392C79700F2FA1A /* PartyOverviewViewController.swift */,
 				4E48CC562393B6FD009680DD /* MapViewController.swift */,
+				4ED7B1D32395D9FC004F62D2 /* SettingsViewController.swift */,
 			);
 			path = " ViewControllers";
 			sourceTree = "<group>";
@@ -266,7 +271,6 @@
 				4E7EE04D238C20FC0070FC1D /* Frameworks */,
 				4E7EE04E238C20FC0070FC1D /* Resources */,
 				2628C9889A64415390B6CE47 /* [CP] Embed Pods Frameworks */,
-				C869CEFB4EC02E0202109A5D /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -305,7 +309,6 @@
 				4E7EE071238C20FE0070FC1D /* Frameworks */,
 				4E7EE072238C20FE0070FC1D /* Resources */,
 				7B13D70136CCEC9ADA30F40C /* [CP] Embed Pods Frameworks */,
-				A7FCE32C5941A898881703AE /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -468,40 +471,6 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		A7FCE32C5941A898881703AE /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-GameHub-iOS-GameHub-iOSUITests/Pods-GameHub-iOS-GameHub-iOSUITests-resources-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Copy Pods Resources";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-GameHub-iOS-GameHub-iOSUITests/Pods-GameHub-iOS-GameHub-iOSUITests-resources-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-GameHub-iOS-GameHub-iOSUITests/Pods-GameHub-iOS-GameHub-iOSUITests-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		C869CEFB4EC02E0202109A5D /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-GameHub-iOS/Pods-GameHub-iOS-resources-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Copy Pods Resources";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-GameHub-iOS/Pods-GameHub-iOS-resources-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-GameHub-iOS/Pods-GameHub-iOS-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
 		F9C178F11DE51B2A761405AC /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -533,7 +502,8 @@
 			files = (
 				4EC71AD92392FFE000F2FA1A /* GamesNetworkContainer.swift in Sources */,
 				4EAC10B5238D1AFF0092D423 /* Game.swift in Sources */,
-				4EC71AD52392C79700F2FA1A /* PartyOverviewTableViewController.swift in Sources */,
+				4EC71AD52392C79700F2FA1A /* PartyOverviewViewController.swift in Sources */,
+				4ED7B1D42395D9FC004F62D2 /* SettingsViewController.swift in Sources */,
 				4EAC10BD238D1BB20092D423 /* UserRole.swift in Sources */,
 				4EC71ADD2393163C00F2FA1A /* Location.swift in Sources */,
 				4E7EE054238C20FC0070FC1D /* AppDelegate.swift in Sources */,
@@ -541,11 +511,9 @@
 				4E48CC572393B6FD009680DD /* MapViewController.swift in Sources */,
 				4EC71ADB2393131000F2FA1A /* PartiesNetworkContainer.swift in Sources */,
 				4EAC10C5238D2DB10092D423 /* PartyTableViewCell.swift in Sources */,
-				4EAC10CA238D32730092D423 /* FAB.swift in Sources */,
 				4EAC10BF238D1BE10092D423 /* User.swift in Sources */,
 				4EAC10B7238D1B310092D423 /* GameType.swift in Sources */,
 				4E7EE056238C20FC0070FC1D /* SceneDelegate.swift in Sources */,
-				4EAC10C8238D31B00092D423 /* PartyCard.swift in Sources */,
 				4EC71AD32392BEB200F2FA1A /* AuthenticationViewController.swift in Sources */,
 				4EC71AD72392E2F400F2FA1A /* NetworkManager.swift in Sources */,
 				4EAC10C2238D29520092D423 /* CardStackViewController.swift in Sources */,

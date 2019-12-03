@@ -15,15 +15,15 @@ public struct Game: Codable {
     var description: String
     var rules: String
     var requirements: String
-    //var type: GameType
+    var type: GameType
     
-    init(id _id: String?, name:String, description: String, rules: String, requirements: String /*,type: GameType*/) {
+    init(id _id: String?, name:String, description: String, rules: String, requirements: String ,type: GameType) {
         self._id = _id
         self.name = name
         self.description = description
         self.rules = rules
         self.requirements = requirements
-        //self.type = type
+        self.type = type
     }
     
 //    enum CodingKeys: String, CodingKey {

@@ -1,84 +1,28 @@
 PODS:
   - Auth0 (1.19.3):
     - SimpleKeychain
-  - GoogleMaps (3.6.0):
-    - GoogleMaps/Maps (= 3.6.0)
-  - GoogleMaps/Base (3.6.0)
-  - GoogleMaps/Maps (3.6.0):
-    - GoogleMaps/Base
-  - MaterialComponents/AnimationTiming (94.1.0)
-  - MaterialComponents/Buttons (94.1.0):
-    - MaterialComponents/Elevation
-    - MaterialComponents/Ink
-    - MaterialComponents/private/Math
-    - MaterialComponents/Ripple
-    - MaterialComponents/ShadowElevations
-    - MaterialComponents/ShadowLayer
-    - MaterialComponents/Shapes
-    - MaterialComponents/Typography
-    - MDFInternationalization
-    - MDFTextAccessibility
-  - MaterialComponents/Cards (94.1.0):
-    - MaterialComponents/Elevation
-    - MaterialComponents/Ink
-    - MaterialComponents/private/Icons/ic_check_circle
-    - MaterialComponents/private/Math
-    - MaterialComponents/Ripple
-    - MaterialComponents/ShadowLayer
-    - MaterialComponents/Shapes
-  - MaterialComponents/Elevation (94.1.0):
-    - MaterialComponents/private/Color
-    - MaterialComponents/private/Math
-  - MaterialComponents/Ink (94.1.0):
-    - MaterialComponents/private/Color
-    - MaterialComponents/private/Math
-  - MaterialComponents/private/Application (94.1.0)
-  - MaterialComponents/private/Color (94.1.0)
-  - MaterialComponents/private/Icons/Base (94.1.0)
-  - MaterialComponents/private/Icons/ic_check_circle (94.1.0):
-    - MaterialComponents/private/Icons/Base
-  - MaterialComponents/private/Math (94.1.0)
-  - MaterialComponents/Ripple (94.1.0):
-    - MaterialComponents/AnimationTiming
-    - MaterialComponents/private/Color
-    - MaterialComponents/private/Math
-  - MaterialComponents/ShadowElevations (94.1.0)
-  - MaterialComponents/ShadowLayer (94.1.0):
-    - MaterialComponents/ShadowElevations
-  - MaterialComponents/Shapes (94.1.0):
-    - MaterialComponents/private/Color
-    - MaterialComponents/private/Math
-    - MaterialComponents/ShadowLayer
-  - MaterialComponents/Typography (94.1.0):
-    - MaterialComponents/private/Application
-    - MaterialComponents/private/Math
-  - MDFInternationalization (2.0.0)
-  - MDFTextAccessibility (2.0.0)
+  - Loaf (0.5.0)
+  - lottie-ios (3.1.5)
   - SimpleKeychain (0.9.0)
 
 DEPENDENCIES:
   - Auth0 (~> 1.19)
-  - GoogleMaps
-  - MaterialComponents/Buttons
-  - MaterialComponents/Cards
+  - Loaf
+  - lottie-ios
 
 SPEC REPOS:
   trunk:
     - Auth0
-    - GoogleMaps
-    - MaterialComponents
-    - MDFInternationalization
-    - MDFTextAccessibility
+    - Loaf
+    - lottie-ios
     - SimpleKeychain
 
 SPEC CHECKSUMS:
   Auth0: 195ea089de471c72bf95eb5320ff86c224debf3c
-  GoogleMaps: 82f8fe307193bb4de6ef6bf9e88f1d624b718f9d
-  MaterialComponents: c00d0dac9a2cbb05ddfa1614711c9dad7620b8f7
-  MDFInternationalization: 010097556d6b09d2c4ea38e0820ea6d37be6a314
-  MDFTextAccessibility: 85c09a1bd9c321f494348e632a25063bcda35a53
+  Loaf: 0800b444431366bc395d54267975d4ad4ad5c99c
+  lottie-ios: 32bf84389337d86fbc8b12266e88452e0abf1dee
   SimpleKeychain: 3be49072fd2d82de8fa83d847ef1e548622f8fc5
 
-PODFILE CHECKSUM: 18c75b2a0c8b967648adb581e529f97a14c21c47
+PODFILE CHECKSUM: 5003eca308270610b712cdc7dbb847ada34c962b
 
 COCOAPODS: 1.8.4

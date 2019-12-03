@@ -8,72 +8,50 @@
 
 import UIKit
 import Auth0
+import Loaf
 
 class AuthenticationViewController: UIViewController {
     private var isAuthenticated = false
-
+    private static var amountVisited: Int = 0
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        if AuthenticationViewController.amountVisited == 1 {
+            Loaf("Successful logout", state: .success, location: .bottom, presentingDirection: .vertical, dismissingDirection: .vertical, sender: self).show()
+            AuthenticationViewController.amountVisited += 1
+        }
     }
     
     @IBAction func showLogin(_ sender: UIButton) {
         guard let clientInfo = plistValues(bundle: Bundle.main) else { return }
-        
-        if(!isAuthenticated){
-            Auth0
-                .webAuth()
-                .scope("openid profile")
-                .audience("https://" + clientInfo.domain + "/userinfo")
-                .start {
-                    switch $0 {
-                        case .failure(let error):
-                            print("Error: \(error)")
-                        case .success(let credentials):
-                            guard let accessToken = credentials.accessToken else { return }
-                            
-                            DispatchQueue.main.async {
-                                self.showSuccessAlert("accessToken: \(accessToken)")
-                                self.isAuthenticated = true
-                                sender.setTitle("Log out", for: .normal)
-                            }
+        Auth0
+            .webAuth()
+            .scope("openid profile")
+            .audience("https://" + clientInfo.domain + "/userinfo")
+            .start {
+                switch $0 {
+                case .failure(let error):
+                    Loaf("Something went wrong, please try again!", state: .error, location: .bottom, presentingDirection: .vertical, dismissingDirection: .vertical, sender: self).show()
+                    print("Error: \(error)")
+                case .success(let credentials):
+                    guard let accessToken = credentials.accessToken else { return }
+                    //send accestoken to get user info back
+                    DispatchQueue.main.async {
+                        self.isAuthenticated = true
+                        self.performSegue(withIdentifier: "authenticate", sender: self)
+                        
                     }
                 }
         }
-        else{
-            Auth0
-                .webAuth()
-                .clearSession(federated:false){
-                    switch $0{
-                        case true:
-                            DispatchQueue.main.async {
-                                sender.setTitle("Log in", for: .normal)
-                                self.isAuthenticated = false
-                            }
-                        case false:
-                            DispatchQueue.main.async {
-                                self.showSuccessAlert("An error occurred")
-                        }
-                    }
-                }
-        }
-    }
-    
-    fileprivate func showSuccessAlert(_ message: String) {
-        let alert = UIAlertController(title: "Message", message: message, preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
-        self.present(alert, animated: true, completion: nil)
     }
     
     override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
         return .portrait
     }
-
-//    override func shouldAutorotate() -> Bool {
-//        return false
-//    }
-    
 }
 
 func plistValues(bundle: Bundle) -> (clientId: String, domain: String)? {
@@ -84,7 +62,7 @@ func plistValues(bundle: Bundle) -> (clientId: String, domain: String)? {
             print("Missing Auth0.plist file with 'ClientId' and 'Domain' entries in main bundle!")
             return nil
     }
-
+    
     guard
         let clientId = values["ClientId"] as? String,
         let domain = values["Domain"] as? String

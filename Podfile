@@ -7,15 +7,14 @@ target 'GameHub-iOS' do
 
   # Pods for GameHub-iOS
   
-  # Material Components
-  pod 'MaterialComponents/Buttons'
-  pod 'MaterialComponents/Cards'
+  # Loaf
+  pod 'Loaf'
   
   # Auth0
   pod 'Auth0', '~> 1.19'
   
-  # Google Maps
-  pod 'GoogleMaps'
+  # Lottie
+  pod 'lottie-ios'
 
   target 'GameHub-iOSTests' do
     inherit! :search_paths

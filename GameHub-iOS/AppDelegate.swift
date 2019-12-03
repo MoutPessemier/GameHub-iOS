@@ -9,13 +9,11 @@
 import UIKit
 import CoreData
 import Auth0
-import GoogleMaps
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        GMSServices.provideAPIKey("AIzaSyDJXh4ihvMiJgsh0HHuver2zAY8xgKpAcY")
         return true
     }
     
