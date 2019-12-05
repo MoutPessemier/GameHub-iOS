@@ -1,28 +1,32 @@
 PODS:
   - Auth0 (1.19.3):
     - SimpleKeychain
+  - LGButton (1.1.6)
   - Loaf (0.5.0)
   - lottie-ios (3.1.5)
   - SimpleKeychain (0.9.0)
 
 DEPENDENCIES:
   - Auth0 (~> 1.19)
+  - LGButton
   - Loaf
   - lottie-ios
 
 SPEC REPOS:
   trunk:
     - Auth0
+    - LGButton
     - Loaf
     - lottie-ios
     - SimpleKeychain
 
 SPEC CHECKSUMS:
   Auth0: 195ea089de471c72bf95eb5320ff86c224debf3c
+  LGButton: 9f0a7f9d3030e3f504108342f6b66d64a429371b
   Loaf: 0800b444431366bc395d54267975d4ad4ad5c99c
   lottie-ios: 32bf84389337d86fbc8b12266e88452e0abf1dee
   SimpleKeychain: 3be49072fd2d82de8fa83d847ef1e548622f8fc5
 
-PODFILE CHECKSUM: 5003eca308270610b712cdc7dbb847ada34c962b
+PODFILE CHECKSUM: f2dfd007ff0145810a0b5df687e875b9498f303f
 
 COCOAPODS: 1.8.4

@@ -7,6 +7,9 @@ target 'GameHub-iOS' do
 
   # Pods for GameHub-iOS
   
+  # LGButton
+  pod 'LGButton'
+  
   # Loaf
   pod 'Loaf'
   

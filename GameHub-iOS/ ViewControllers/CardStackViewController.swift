@@ -14,7 +14,7 @@ import Lottie
 import Loaf
 
 class CardStackViewController: UIViewController, CLLocationManagerDelegate, NetworkManagerDelegate {
-    private static var amountVisited: Int = 0
+    
     private var networkManager: NetworkManager = NetworkManager()
     private var games: [Game] = []
     private var parties: [Party] = []
@@ -30,10 +30,6 @@ class CardStackViewController: UIViewController, CLLocationManagerDelegate, Netw
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-//        if CardStackViewController.amountVisited == 0 {
-//            Loaf("Successful login", state: .success, location: .bottom, presentingDirection: .vertical, dismissingDirection: .vertical, sender: self).show()
-//            CardStackViewController.amountVisited += 1
-//        }
         getCurrentLocation()
     }
     
