@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Lottie
 
 class PartyOverviewViewController: UIViewController, NetworkManagerDelegate {
     
@@ -14,12 +15,9 @@ class PartyOverviewViewController: UIViewController, NetworkManagerDelegate {
     private var joinedParties: [Party] = []
     private var games: [Game] = []
     @IBOutlet private var tableView: UITableView!
+    @IBOutlet private var animationView: AnimationView!
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        
-    }
-    
+    // MARK: - LifeCycle
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.dataSource = self
@@ -27,6 +25,11 @@ class PartyOverviewViewController: UIViewController, NetworkManagerDelegate {
         networkManager.delegate = self
         networkManager.getGames()
         networkManager.getJoinedParties(userId: "5db8838eaffe445c66076a88")
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        animationView.isHidden = true
     }
     
     // MARK: - Network Delegate
@@ -49,11 +52,15 @@ class PartyOverviewViewController: UIViewController, NetworkManagerDelegate {
     }
     
     func didFail(with error: Error) {
-        
-    }
-    
-    override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
-        return .portrait
+        DispatchQueue.main.async {
+            if let animation = Animation.named("error", subdirectory: "Animations") {
+                self.animationView.isHidden = false
+                self.animationView.animation = animation
+                self.animationView.loopMode = .loop
+                self.animationView.play()
+            }
+        }
+        print("---DIDFAIL WITH ERROR @ PARTYOVERVIEW", error.localizedDescription, error)
     }
 }
 
@@ -67,10 +74,17 @@ extension PartyOverviewViewController: UITableViewDataSource {
         let cell = tableView.dequeueReusableCell(withIdentifier: "ReusableCell", for: indexPath) as! PartyTableViewCell
         let party: Party = joinedParties[indexPath.row]
         cell.partyName.text = party.name
-        cell.partyDate.text = "1/1/1"
+        cell.partyDate.text = getSimpleDate(party.date.iso8601)
         cell.gameName.text = games.first(where: { (game) -> Bool in
-            game._id == party.gameId
+            game.id == party.gameId
         })?.name
         return cell
     }
+}
+
+// MARK: - Helpers
+private func getSimpleDate(_ dateString: String) -> String {
+    let dateArray = dateString.split { $0 == "T" }
+    let date: String = String(dateArray[0]).replacingOccurrences(of: "-", with: "/")
+    return date
 }

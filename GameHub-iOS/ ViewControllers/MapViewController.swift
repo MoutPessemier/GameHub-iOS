@@ -8,47 +8,34 @@
 
 import UIKit
 import MapKit
+import Lottie
 
 class MapViewController: UIViewController, CLLocationManagerDelegate, NetworkManagerDelegate, MKMapViewDelegate {
-
+    
     private var networkManager: NetworkManager = NetworkManager()
     private var parties: [Party] = []
     @IBOutlet var map: MKMapView!
-    private var currentLocation: CLLocation? = nil
-    private let radius: CLLocationDistance = 100
+    private let radius: CLLocationDistance = 30000
     let locationManager = CLLocationManager()
     
-    
+    // MARK: - LifeCycle
     override func viewDidLoad() {
         super.viewDidLoad()
         networkManager.delegate = self
         map.delegate = self
-    }
-    
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
         getCurrentLocation()
-        guard let safeLocation = currentLocation else { return print("---TEST---") }
-        print("---LOCATION---", safeLocation)
-        centerMap(safeLocation)
-        
-    }
-    
-    override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
-        return .portrait
     }
     
     // MARK: - Map
     func centerMap(_ location: CLLocation) {
-                map.showsUserLocation = true
+        map.showsUserLocation = true
         map.setCenter(location.coordinate, animated: true)
         map.setCamera(.init(lookingAtCenter: location.coordinate, fromEyeCoordinate: location.coordinate, eyeAltitude: location.altitude), animated: true)
         let region = MKCoordinateRegion(center: location.coordinate, latitudinalMeters: radius, longitudinalMeters: radius)
         map.setRegion(region, animated: true)
-        annotateMap()
     }
     
-    func annotateMap() {
+    private func annotateMap() {
         parties.forEach { (party) in
             let annotation = MKPointAnnotation()
             annotation.title = party.name
@@ -58,8 +45,7 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, NetworkMan
     }
     
     // MARK: - Location
-    func getCurrentLocation() {
-        locationManager.requestWhenInUseAuthorization()
+    private func getCurrentLocation() {
         if CLLocationManager.locationServicesEnabled() {
             locationManager.delegate = self
             locationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters
@@ -69,16 +55,17 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, NetworkMan
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         guard let locValue: CLLocationCoordinate2D = manager.location?.coordinate else { return }
-        currentLocation = CLLocation(latitude: locValue.latitude, longitude: locValue.longitude)
-        //networkManager.getPartiesNearYou(maxDistance: 10, userId: "5db8838eaffe445c66076a89", latitude: locValue.latitude, longitude: locValue.longitude)
-        networkManager.getPartiesNearYou(maxDistance: 10, userId: "5db8838eaffe445c66076a89", latitude: 51.05, longitude: 3.72)
+        let currentLocation = CLLocation(latitude: locValue.latitude, longitude: locValue.longitude)
+        centerMap(currentLocation)
+        networkManager.getPartiesNearYou(maxDistance: 10, userId: "5decc1fa600ecf25c1e0433e", latitude: locValue.latitude, longitude: locValue.longitude)
+        
     }
     
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
-        print("Error \(error)")
+        print("---LOCATIONMANAGER DID FAIL---", error.localizedDescription)
     }
     
-    // MARK: - Delegate
+    // MARK: - Network Delegate
     
     func updateGames(_ networkManager: NetworkManager, _ games: [Game]) {
         fatalError("NotNeededException: This data is not needed in this controller")
@@ -86,7 +73,9 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, NetworkMan
     
     func updateParties(_ networkManager: NetworkManager, _ parties: [Party]) {
         self.parties = parties
-        annotateMap()
+        DispatchQueue.main.async {
+            self.annotateMap()
+        }
     }
     
     func updateUser(_ networkManager: NetworkManager, _ user: User) {
@@ -94,6 +83,6 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, NetworkMan
     }
     
     func didFail(with error: Error) {
-        
+        print("---DIDFAIL WITH ERROR @ MAPVIEW---", error.localizedDescription, error)
     }
 }
