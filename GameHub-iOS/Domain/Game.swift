@@ -10,28 +10,28 @@ import Foundation
 
 public struct Game: Codable {
     
-    var _id: String?
+    var id: String?
     var name: String
     var description: String
     var rules: String
     var requirements: String
     var type: GameType
     
-    init(id _id: String?, name:String, description: String, rules: String, requirements: String ,type: GameType) {
-        self._id = _id
+    init(id: String?, name:String, description: String, rules: String, requirements: String ,type: GameType) {
+        self.id = id
         self.name = name
         self.description = description
         self.rules = rules
         self.requirements = requirements
         self.type = type
     }
-    
-//    enum CodingKeys: String, CodingKey {
-//        case id = "_id"
-//        case name = "name"
-//        case desciprion = "description"
-//        case rules = "rules"
-//        case requirements = "requirements"
-//        case type = "type"
-//    }
+
+    enum CodingKeys: String, CodingKey {
+        case id = "_id"
+        case name
+        case description
+        case rules
+        case requirements
+        case type
+    }
 }

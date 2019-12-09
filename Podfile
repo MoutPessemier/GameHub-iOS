@@ -1,5 +1,5 @@
 # Uncomment the next line to define a global platform for your project
-# platform :ios, '9.0'
+platform :ios, '13.0'
 
 target 'GameHub-iOS' do
   # Comment the next line if you don't want to use dynamic frameworks
@@ -10,6 +10,12 @@ target 'GameHub-iOS' do
   # LGButton
   pod 'LGButton'
   
+  # Koloda
+  pod "Koloda"
+  
+  # Material
+  pod 'Material', '~> 3.1.8'
+  
   # Loaf
   pod 'Loaf'
   
@@ -18,6 +24,9 @@ target 'GameHub-iOS' do
   
   # Lottie
   pod 'lottie-ios'
+  
+  # Sentry
+  # pod 'Sentry', :git => 'https://github.com/getsentry/sentry-cocoa.git', :tag => '4.4.1'
 
   target 'GameHub-iOSTests' do
     inherit! :search_paths

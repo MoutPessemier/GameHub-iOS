@@ -14,10 +14,7 @@ class AuthenticationViewController: UIViewController {
     private var isAuthenticated = false
     private static var amountVisited: Int = 0
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-    }
-    
+    // MARK: - LifeCycle
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         if AuthenticationViewController.amountVisited == 1 {
@@ -26,6 +23,11 @@ class AuthenticationViewController: UIViewController {
         }
     }
     
+    override func viewDidLoad() {
+        super.viewDidLoad()
+    }
+    
+    // MARK: - Auth0
     @IBAction func showLogin(_ sender: UIButton) {
         guard let clientInfo = plistValues(bundle: Bundle.main) else { return }
         Auth0
@@ -38,7 +40,7 @@ class AuthenticationViewController: UIViewController {
                     Loaf("Something went wrong, please try again!", state: .error, location: .bottom, presentingDirection: .vertical, dismissingDirection: .vertical, sender: self).show()
                     print("Error: \(error)")
                 case .success(let credentials):
-                    guard let accessToken = credentials.accessToken else { return }
+                    guard credentials.accessToken != nil else { return }
                     //send accestoken to get user info back
                     DispatchQueue.main.async {
                         self.isAuthenticated = true
@@ -47,10 +49,6 @@ class AuthenticationViewController: UIViewController {
                     }
                 }
         }
-    }
-    
-    override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
-        return .portrait
     }
 }
 

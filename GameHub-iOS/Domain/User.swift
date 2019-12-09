@@ -10,13 +10,29 @@ import Foundation
 
 public struct User: Codable {
     
-    var _id: String?
+    var id: String?
+    var firstName: String
+    var lastName: String
     var email: String
     var maxDistance: Int
     
-    init(id _id: String?, email: String, maxDistance: Int) {
-        self._id = _id
+    var name: String {
+        return firstName + " " + lastName
+    }
+    
+    init(id: String?, firstName: String, lastName: String, email: String, maxDistance: Int) {
+        self.id = id
+        self.firstName = firstName
+        self.lastName = lastName
         self.email = email
         self.maxDistance = maxDistance
+    }
+    
+    enum CodingKeys: String, CodingKey {
+        case id = "_id"
+        case firstName
+        case lastName
+        case email
+        case maxDistance
     }
 }

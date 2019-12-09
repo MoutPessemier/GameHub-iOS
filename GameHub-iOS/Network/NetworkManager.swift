@@ -23,6 +23,7 @@ struct NetworkManager {
     // MARK: - Games
     func getGames() {
         let urlString = "\(url)games"
+        print("URL", urlString)
         performRequest(with: urlString) {data, response, error in
             if error != nil {
                 self.delegate?.didFail(with: error!)
@@ -54,9 +55,10 @@ struct NetworkManager {
             
             if let safeData = data {
                 let decoder = JSONDecoder()
-                    decoder.dateDecodingStrategy = .iso8601
+                decoder.dateDecodingStrategy = .iso8601withFractionalSeconds
                 do {
                     let decodedContainer = try decoder.decode(PartiesNetworkContainer.self, from: safeData)
+                    
                     self.delegate?.updateParties(self, decodedContainer.parties)
                 } catch {
                     self.delegate?.didFail(with: error)
@@ -67,6 +69,7 @@ struct NetworkManager {
     
     func getJoinedParties(userId: String) {
         let urlString = "\(url)getJoinedParties?userId=\(userId)"
+        print("URL", urlString)
         performRequest(with: urlString) { (data, response, error) in
             if error != nil {
                 self.delegate?.didFail(with: error!)
@@ -75,6 +78,7 @@ struct NetworkManager {
             
             if let safeData = data {
                 let decoder = JSONDecoder()
+                decoder.dateDecodingStrategy = .iso8601withFractionalSeconds
                 do {
                     let decodedContainer = try decoder.decode(PartiesNetworkContainer.self, from: safeData)
                     self.delegate?.updateParties(self, decodedContainer.parties)
@@ -85,10 +89,73 @@ struct NetworkManager {
         }
     }
     
+    func joinParty(partyId: String, userId: String) {
+        let urlString = "\(url)joinParty"
+        print("URL", urlString)
+        let encoder = JSONEncoder()
+        encoder.dateEncodingStrategy = .iso8601withFractionalSeconds
+        let partyIdentifier = PartyIdentifierDTO(partyId: partyId, userId: userId)
+        do {
+            let encodedData = try encoder.encode(partyIdentifier)
+            performPostRequest(with: urlString, body: encodedData) { (data, response, error) in
+                if error != nil {
+                    self.delegate?.didFail(with: error!)
+                    return
+                }
+                
+                //might not need this part
+                if let safeData = data {
+                    let decoder = JSONDecoder()
+                    decoder.dateDecodingStrategy = .iso8601withFractionalSeconds
+                    do {
+                        let _ = try decoder.decode(Party.self, from: safeData)
+                        // only joinedParties need to be updated --> get that list from the backend
+                    } catch {
+                        self.delegate?.didFail(with: error)
+                    }
+                }
+            }
+        } catch {
+            delegate?.didFail(with: error)
+        }
+    }
+    
+    func declineParty(partyId: String, userId: String) {
+        let urlString = "\(url)declineParty"
+        print("URL", urlString)
+        let encoder = JSONEncoder()
+        encoder.dateEncodingStrategy = .iso8601withFractionalSeconds
+        let partyIdentifier = PartyIdentifierDTO(partyId: partyId, userId: userId)
+        do {
+            let encodedData = try encoder.encode(partyIdentifier)
+            performPostRequest(with: urlString, body: encodedData) { (data, response, error) in
+                if error != nil {
+                    self.delegate?.didFail(with: error!)
+                    return
+                }
+                
+                //might not need this part
+                if let safeData = data {
+                    let decoder = JSONDecoder()
+                    decoder.dateDecodingStrategy = .iso8601withFractionalSeconds
+                    do {
+                        let _ = try decoder.decode(Party.self, from: safeData)
+                        // only declinedParties need to be updated --> get that list from the backend
+                    } catch {
+                        self.delegate?.didFail(with: error)
+                    }
+                }
+            }
+        } catch {
+            delegate?.didFail(with: error)
+        }
+    }
+    
     // MARK: - User
     
     func getUser(email: String) {
         let urlString = "\(url)getUserByEmail?email=\(email)"
+        print("URL", urlString)
         performRequest(with: urlString) { data, response, error in
             if error != nil {
                 self.delegate?.didFail(with: error!)
@@ -107,10 +174,60 @@ struct NetworkManager {
         }
     }
     
+    func updateUser(user: User) {
+        let urlString = "\(url)updateUser"
+        print("URL", urlString)
+        let encoder = JSONEncoder()
+        do {
+            let encodedData = try encoder.encode(user)
+            performPutRequest(with: urlString, body: encodedData) { (data, response, error) in
+                if error != nil {
+                    self.delegate?.didFail(with: error!)
+                    return
+                }
+                
+                if let safeData = data {
+                    let decoder  = JSONDecoder()
+                    do {
+                        let decodedUser = try decoder.decode(User.self, from: safeData)
+                        self.delegate?.updateUser(self, decodedUser)
+                    } catch {
+                        self.delegate?.didFail(with: error)
+                    }
+                }
+            }
+        } catch {
+            delegate?.didFail(with: error)
+        }
+    }
+    
+    // MARK: - Helpers
     private func performRequest(with urlString: String, onCompletionCallback: @escaping (Data?, URLResponse?, Error?) -> Void) {
         if let url = URL(string: urlString) {
             let session = URLSession(configuration: .default)
             let task = session.dataTask(with: url, completionHandler: onCompletionCallback)
+            task.resume()
+        }
+    }
+    
+    private func performPostRequest(with urlString: String, body: Data ,onCompletionCallback: @escaping (Data?, URLResponse?, Error?) -> Void) {
+        if let url = URL(string: urlString) {
+            var request = URLRequest(url: url)
+            request.httpMethod = "POST"
+            request.httpBody = body
+            let session = URLSession(configuration: .default)
+            let task = session.dataTask(with: request, completionHandler: onCompletionCallback)
+            task.resume()
+        }
+    }
+    
+    private func performPutRequest(with urlString: String, body: Data ,onCompletionCallback: @escaping (Data?, URLResponse?, Error?) -> Void) {
+        if let url = URL(string: urlString) {
+            var request = URLRequest(url: url)
+            request.httpMethod = "PUT"
+            request.httpBody = body
+            let session = URLSession(configuration: .default)
+            let task = session.dataTask(with: request, completionHandler: onCompletionCallback)
             task.resume()
         }
     }
