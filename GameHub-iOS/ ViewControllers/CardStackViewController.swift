@@ -35,12 +35,18 @@ class CardStackViewController: UIViewController, CLLocationManagerDelegate, Netw
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        animationView.isHidden = true
+        
+
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         getCurrentLocation()
+        if let animation = Animation.named("loading_infinity") {
+            animationView.animation = animation
+            animationView.loopMode = .loop
+            animationView.play()
+        }
     }
     
     //MARK: - Location
@@ -72,6 +78,8 @@ class CardStackViewController: UIViewController, CLLocationManagerDelegate, Netw
     func updateParties(_ networkManager: NetworkManager, _ parties: [Party]) {
         self.parties = parties
         DispatchQueue.main.async {
+            self.animationView.animation = nil
+            self.animationView.isHidden = true
             self.stackView.reloadData()
         }
     }
@@ -82,24 +90,25 @@ class CardStackViewController: UIViewController, CLLocationManagerDelegate, Netw
     
     func didFail(with error: Error) {
         DispatchQueue.main.async {
-            if let animation = Animation.named("error", subdirectory: "Animations") {
+            if let animation = Animation.named("error") {
                 self.animationView.isHidden = false
                 self.animationView.animation = animation
-                self.animationView.loopMode = .loop
-                self.animationView.play()
+                self.animationView.loopMode = .repeat(3.0)
+                self.animationView.play { (finished) in self.animationView.stop() }
             }
         }
         print("---DIDFAIL WITH ERROR @ CARDSTACK---", error.localizedDescription)
     }
     
     // MARK: - Swipe
-    
     @IBAction func swipeRight(_ sender: Any) {
-        stackView.swipe(.left)
+        stackView.swipe(.right)
+        networkManager.joinParty(partyId: "5deeb967d34f20001e0762fa", userId: "5decc1fa600ecf25c1e0433e")
     }
     
     @IBAction func swipeLeft(_ sender: Any) {
-        stackView.swipe(.right)
+        stackView.swipe(.left)
+        networkManager.declineParty(partyId: "5deeb967d34f20001e0762fa", userId: "5decc1fa600ecf25c1e0433e")
     }
 }
 
@@ -110,7 +119,7 @@ extension CardStackViewController: KolodaViewDelegate {
     }
     
     func koloda(_ koloda: KolodaView, didSelectCardAt index: Int) {
-        //UIApplication.shared.openURL(URL(string: "https://yalantis.com/")!)
+        // don't know what needs to happen here
     }
 }
 

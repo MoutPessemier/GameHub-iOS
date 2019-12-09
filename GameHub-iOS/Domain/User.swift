@@ -15,17 +15,15 @@ public struct User: Codable {
     var lastName: String
     var email: String
     var maxDistance: Int
+    var userRole: UserRole
     
-    var name: String {
-        return firstName + " " + lastName
-    }
-    
-    init(id: String?, firstName: String, lastName: String, email: String, maxDistance: Int) {
+    init(id: String?, firstName: String, lastName: String, email: String, maxDistance: Int, userRole: UserRole) {
         self.id = id
         self.firstName = firstName
         self.lastName = lastName
         self.email = email
         self.maxDistance = maxDistance
+        self.userRole = userRole
     }
     
     enum CodingKeys: String, CodingKey {
@@ -34,5 +32,6 @@ public struct User: Codable {
         case lastName
         case email
         case maxDistance
+        case userRole
     }
 }

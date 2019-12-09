@@ -17,15 +17,25 @@ class SettingsViewController: UIViewController, NetworkManagerDelegate {
     private var loggedInUser: User? = nil
     private var networkManager: NetworkManager = NetworkManager()
     @IBOutlet private var animationView: AnimationView!
-    @IBOutlet private var lblName: UITextField!
-    @IBOutlet private var lblEmail: UITextField!
+    @IBOutlet private var txtFirstName: UITextField!
+    @IBOutlet private var txtLastName: UITextField!
+    @IBOutlet private var txtEmail: UITextField!
     @IBOutlet private var distanceSlider: UISlider!
     
     // MARK: - LifeCycle
     override func viewDidLoad() {
         super.viewDidLoad()
         networkManager.delegate = self
-        animationView.isHidden = true
+        networkManager.getUser(email: "moutpessemier@hotmail.com")
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        if let animation = Animation.named("loading_infinity") {
+            animationView.animation = animation
+            animationView.loopMode = .loop
+            animationView.play()
+        }
     }
     
     // MARK: - Auth0
@@ -48,17 +58,17 @@ class SettingsViewController: UIViewController, NetworkManagerDelegate {
     }
     
     @IBAction private func saveChanges(_ sender: Any) {
-        guard let name = lblName.text else { return }
-        guard let email = lblEmail.text else { return }
+        guard let firstName = txtFirstName.text else { return }
+        guard let lastName = txtLastName.text else { return }
+        guard let email = txtEmail.text else { return }
         let distance = distanceSlider.value
         
         guard var user = loggedInUser else  { return }
         
         user.email = email
         user.maxDistance = Int(distance)
-        let names = name.split(separator: " ")
-        user.firstName = String(names[0])
-        user.lastName = String(names [1])
+        user.firstName = firstName
+        user.lastName = lastName
         networkManager.updateUser(user: user)
         updateSettings(user)
     }
@@ -74,16 +84,20 @@ class SettingsViewController: UIViewController, NetworkManagerDelegate {
     
     func updateUser(_ networkManager: NetworkManager, _ user: User) {
         self.loggedInUser = user
-        updateSettings(user)
+        DispatchQueue.main.async {
+            self.animationView.isHidden = true
+            self.animationView.animation = nil
+            self.updateSettings(user)
+        }
     }
     
     func didFail(with error: Error) {
         DispatchQueue.main.async {
-            if let animation = Animation.named("error", subdirectory: "Animations") {
+            if let animation = Animation.named("error") {
                 self.animationView.isHidden = false
                 self.animationView.animation = animation
-                self.animationView.loopMode = .loop
-                self.animationView.play()
+                self.animationView.loopMode = .repeat(3.0)
+                self.animationView.play { (finished) in self.animationView.stop() }
             }
         }
         print("---DIDFAIL WITH ERROR @ SETTINGS---", error.localizedDescription)
@@ -91,8 +105,9 @@ class SettingsViewController: UIViewController, NetworkManagerDelegate {
     
     // MARK: - Helpers
     private func updateSettings(_ user: User){
-        lblName.text = user.name
-        lblEmail.text = user.email
+        txtFirstName.text = user.firstName
+        txtLastName.text = user.lastName
+        txtEmail.text = user.email
         distanceSlider.value = Float(user.maxDistance)
     }
 }

@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		21F200BE198662C9BEA7772E /* Pods_GameHub_iOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C7EFCCA634CBB77CC5A4EC2B /* Pods_GameHub_iOS.framework */; };
 		471BEE28DD9396B2DE74ECAA /* Pods_GameHub_iOS_GameHub_iOSUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EA9361EB26749185FB1634F3 /* Pods_GameHub_iOS_GameHub_iOSUITests.framework */; };
+		4E2349BE239ECC89003AB6DD /* loading_infinity.json in Resources */ = {isa = PBXBuildFile; fileRef = 4E2349BD239ECC89003AB6DD /* loading_infinity.json */; };
 		4E3EE1A92399AFE1006E1670 /* PartyIdentifierDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E3EE1A82399AFE1006E1670 /* PartyIdentifierDTO.swift */; };
 		4E3EE1AD239A5DAA006E1670 /* Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E3EE1AC239A5DAA006E1670 /* Card.swift */; };
 		4E48CC572393B6FD009680DD /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E48CC562393B6FD009680DD /* MapViewController.swift */; };
@@ -62,6 +63,7 @@
 /* Begin PBXFileReference section */
 		03CA9DE0440D134B4365C9BF /* Pods-GameHub-iOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GameHub-iOS.release.xcconfig"; path = "Target Support Files/Pods-GameHub-iOS/Pods-GameHub-iOS.release.xcconfig"; sourceTree = "<group>"; };
 		3364BE83858D84A09431AED2 /* Pods-GameHub-iOSTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GameHub-iOSTests.release.xcconfig"; path = "Target Support Files/Pods-GameHub-iOSTests/Pods-GameHub-iOSTests.release.xcconfig"; sourceTree = "<group>"; };
+		4E2349BD239ECC89003AB6DD /* loading_infinity.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = loading_infinity.json; sourceTree = "<group>"; };
 		4E3EE1A82399AFE1006E1670 /* PartyIdentifierDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PartyIdentifierDTO.swift; sourceTree = "<group>"; };
 		4E3EE1AC239A5DAA006E1670 /* Card.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Card.swift; sourceTree = "<group>"; };
 		4E48CC562393B6FD009680DD /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
@@ -138,6 +140,7 @@
 		4E48CC582393F250009680DD /* Animations */ = {
 			isa = PBXGroup;
 			children = (
+				4E2349BD239ECC89003AB6DD /* loading_infinity.json */,
 				4EDD4DDB239C33EC00595F56 /* error.json */,
 			);
 			path = Animations;
@@ -388,6 +391,7 @@
 				4E7EE063238C20FE0070FC1D /* LaunchScreen.storyboard in Resources */,
 				4E7EE060238C20FE0070FC1D /* Assets.xcassets in Resources */,
 				4EAC10C6238D2DB10092D423 /* PartyTableViewCell.xib in Resources */,
+				4E2349BE239ECC89003AB6DD /* loading_infinity.json in Resources */,
 				4E7EE05B238C20FC0070FC1D /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

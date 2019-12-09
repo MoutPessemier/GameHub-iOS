@@ -11,8 +11,8 @@ import Koloda
 
 class SwipeOverlay: OverlayView {
     
-    private let overlayLeftImageName = ""
-    private let overlayRightImageName = ""
+    private let overlayLeftImageName = "overlaySkip"
+    private let overlayRightImageName = "overlayLike"
     
     private let overlayImageView = UIImageView()
 
@@ -28,5 +28,4 @@ class SwipeOverlay: OverlayView {
             }
         }
     }
-
 }

@@ -16,7 +16,8 @@ protocol NetworkManagerDelegate {
 }
 
 struct NetworkManager {
-    let url = "https://game-hub-backend.herokuapp.com/"
+    //let url = "https://game-hub-backend.herokuapp.com/"
+    let url = "https://76bdddc3.ngrok.io/"
     
     var delegate: NetworkManagerDelegate?
     
@@ -24,7 +25,7 @@ struct NetworkManager {
     func getGames() {
         let urlString = "\(url)games"
         print("URL", urlString)
-        performRequest(with: urlString) {data, response, error in
+        performGetRequest(with: urlString) {data, response, error in
             if error != nil {
                 self.delegate?.didFail(with: error!)
                 return
@@ -47,7 +48,7 @@ struct NetworkManager {
     func getPartiesNearYou(maxDistance: Int, userId: String, latitude: Double, longitude: Double) {
         let urlString = "\(url)getPartiesNearYou?distance=\(maxDistance)&lat=\(latitude)&long=\(longitude)&userId=\(userId)"
         print("URL", urlString)
-        performRequest(with: urlString) {data, response, error in
+        performGetRequest(with: urlString) {data, response, error in
             if error != nil {
                 self.delegate?.didFail(with: error!)
                 return
@@ -70,7 +71,7 @@ struct NetworkManager {
     func getJoinedParties(userId: String) {
         let urlString = "\(url)getJoinedParties?userId=\(userId)"
         print("URL", urlString)
-        performRequest(with: urlString) { (data, response, error) in
+        performGetRequest(with: urlString) { (data, response, error) in
             if error != nil {
                 self.delegate?.didFail(with: error!)
                 return
@@ -108,7 +109,8 @@ struct NetworkManager {
                     let decoder = JSONDecoder()
                     decoder.dateDecodingStrategy = .iso8601withFractionalSeconds
                     do {
-                        let _ = try decoder.decode(Party.self, from: safeData)
+                        let temp = try decoder.decode(Party.self, from: safeData)
+                        print(temp)
                         // only joinedParties need to be updated --> get that list from the backend
                     } catch {
                         self.delegate?.didFail(with: error)
@@ -139,7 +141,8 @@ struct NetworkManager {
                     let decoder = JSONDecoder()
                     decoder.dateDecodingStrategy = .iso8601withFractionalSeconds
                     do {
-                        let _ = try decoder.decode(Party.self, from: safeData)
+                        let temp = try decoder.decode(Party.self, from: safeData)
+                        print(temp)
                         // only declinedParties need to be updated --> get that list from the backend
                     } catch {
                         self.delegate?.didFail(with: error)
@@ -156,7 +159,7 @@ struct NetworkManager {
     func getUser(email: String) {
         let urlString = "\(url)getUserByEmail?email=\(email)"
         print("URL", urlString)
-        performRequest(with: urlString) { data, response, error in
+        performGetRequest(with: urlString) { data, response, error in
             if error != nil {
                 self.delegate?.didFail(with: error!)
                 return
@@ -202,7 +205,7 @@ struct NetworkManager {
     }
     
     // MARK: - Helpers
-    private func performRequest(with urlString: String, onCompletionCallback: @escaping (Data?, URLResponse?, Error?) -> Void) {
+    private func performGetRequest(with urlString: String, onCompletionCallback: @escaping (Data?, URLResponse?, Error?) -> Void) {
         if let url = URL(string: urlString) {
             let session = URLSession(configuration: .default)
             let task = session.dataTask(with: url, completionHandler: onCompletionCallback)
@@ -210,9 +213,10 @@ struct NetworkManager {
         }
     }
     
-    private func performPostRequest(with urlString: String, body: Data ,onCompletionCallback: @escaping (Data?, URLResponse?, Error?) -> Void) {
+    private func performPostRequest(with urlString: String, body: Data, onCompletionCallback: @escaping (Data?, URLResponse?, Error?) -> Void) {
         if let url = URL(string: urlString) {
             var request = URLRequest(url: url)
+            request.setValue("application/json", forHTTPHeaderField: "Content-Type")
             request.httpMethod = "POST"
             request.httpBody = body
             let session = URLSession(configuration: .default)
@@ -224,6 +228,7 @@ struct NetworkManager {
     private func performPutRequest(with urlString: String, body: Data ,onCompletionCallback: @escaping (Data?, URLResponse?, Error?) -> Void) {
         if let url = URL(string: urlString) {
             var request = URLRequest(url: url)
+            request.setValue("application/json", forHTTPHeaderField: "Content-Type")
             request.httpMethod = "PUT"
             request.httpBody = body
             let session = URLSession(configuration: .default)

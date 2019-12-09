@@ -155,7 +155,6 @@
                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="pHt-gN-Opf" customClass="KolodaView" customModule="Koloda">
                                 <rect key="frame" x="32" y="108" width="350" height="500"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" systemColor="systemRedColor" red="1" green="0.23137254901960785" blue="0.18823529411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="V62-XU-pV4" customClass="AnimationView" customModule="Lottie">
                                 <rect key="frame" x="82" y="323" width="250" height="250"/>
@@ -191,8 +190,40 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="2Z8-q0-fYI">
+                                <rect key="frame" x="8" y="76" width="398" height="58.5"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="First Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Z9P-H0-cGs">
+                                        <rect key="frame" x="0.0" y="0.0" width="398" height="20.5"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="2hq-sb-lmt">
+                                        <rect key="frame" x="0.0" y="24.5" width="398" height="34"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                </subviews>
+                            </stackView>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="Zdl-IK-lbF">
+                                <rect key="frame" x="8" y="225" width="398" height="62.5"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Email" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="n9e-uC-gON">
+                                        <rect key="frame" x="0.0" y="0.0" width="398" height="20.5"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="mng-sv-0gq">
+                                        <rect key="frame" x="0.0" y="28.5" width="398" height="34"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                </subviews>
+                            </stackView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="VuF-hu-aFe">
-                                <rect key="frame" x="8" y="229" width="398" height="58.5"/>
+                                <rect key="frame" x="8" y="303.5" width="398" height="58.5"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Maximum Distance" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="b4S-1I-oK7">
                                         <rect key="frame" x="0.0" y="0.0" width="398" height="20.5"/>
@@ -220,55 +251,6 @@
                                             </label>
                                         </subviews>
                                     </stackView>
-                                </subviews>
-                            </stackView>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Y36-Au-fS4" customClass="LGButton" customModule="LGButton">
-                                <rect key="frame" x="16" y="747" width="382" height="50"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="50" id="jtR-JR-AD1"/>
-                                </constraints>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="color" keyPath="gradientStartColor">
-                                        <color key="value" red="0.27058823529999998" green="0.77647058820000003" blue="0.67450980390000004" alpha="1" colorSpace="calibratedRGB"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="color" keyPath="gradientEndColor">
-                                        <color key="value" red="0.95686274510000002" green="0.99607843139999996" blue="0.68235294120000001" alpha="1" colorSpace="calibratedRGB"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                        <real key="value" value="16"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="string" keyPath="titleString" value="Logout"/>
-                                    <userDefinedRuntimeAttribute type="string" keyPath="rightIconString" value="sign-out"/>
-                                    <userDefinedRuntimeAttribute type="string" keyPath="rightIconFontName" value="fa"/>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="titleFontSize">
-                                        <real key="value" value="20"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="rightIconFontSize">
-                                        <real key="value" value="20"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="spacingTitleIcon">
-                                        <real key="value" value="-25"/>
-                                    </userDefinedRuntimeAttribute>
-                                </userDefinedRuntimeAttributes>
-                                <connections>
-                                    <action selector="logout:" destination="r3e-dF-Jdy" eventType="touchUpInside" id="bD0-8h-9GU"/>
-                                </connections>
-                            </view>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="2Z8-q0-fYI">
-                                <rect key="frame" x="8" y="76" width="398" height="58.5"/>
-                                <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Z9P-H0-cGs">
-                                        <rect key="frame" x="0.0" y="0.0" width="398" height="20.5"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="2hq-sb-lmt">
-                                        <rect key="frame" x="0.0" y="24.5" width="398" height="34"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits"/>
-                                    </textField>
                                 </subviews>
                             </stackView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kyz-nl-kgo" customClass="LGButton" customModule="LGButton">
@@ -304,22 +286,39 @@
                                     <action selector="saveChanges:" destination="r3e-dF-Jdy" eventType="touchUpInside" id="w2u-Wn-oxU"/>
                                 </connections>
                             </view>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="Zdl-IK-lbF">
-                                <rect key="frame" x="8" y="150.5" width="398" height="62.5"/>
-                                <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Email" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="n9e-uC-gON">
-                                        <rect key="frame" x="0.0" y="0.0" width="398" height="20.5"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="mng-sv-0gq">
-                                        <rect key="frame" x="0.0" y="28.5" width="398" height="34"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits"/>
-                                    </textField>
-                                </subviews>
-                            </stackView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Y36-Au-fS4" customClass="LGButton" customModule="LGButton">
+                                <rect key="frame" x="16" y="747" width="382" height="50"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="jtR-JR-AD1"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="gradientStartColor">
+                                        <color key="value" red="0.27058823529999998" green="0.77647058820000003" blue="0.67450980390000004" alpha="1" colorSpace="calibratedRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="gradientEndColor">
+                                        <color key="value" red="0.95686274510000002" green="0.99607843139999996" blue="0.68235294120000001" alpha="1" colorSpace="calibratedRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="16"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="titleString" value="Logout"/>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="rightIconString" value="sign-out"/>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="rightIconFontName" value="fa"/>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="titleFontSize">
+                                        <real key="value" value="20"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="rightIconFontSize">
+                                        <real key="value" value="20"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="spacingTitleIcon">
+                                        <real key="value" value="-25"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="logout:" destination="r3e-dF-Jdy" eventType="touchUpInside" id="bD0-8h-9GU"/>
+                                </connections>
+                            </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VTu-kd-2Do" customClass="AnimationView" customModule="Lottie">
                                 <rect key="frame" x="82" y="323" width="250" height="250"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
@@ -328,25 +327,44 @@
                                     <constraint firstAttribute="width" constant="250" id="LcI-mJ-jAG"/>
                                 </constraints>
                             </view>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="nxx-0j-owb">
+                                <rect key="frame" x="8" y="150.5" width="398" height="58.5"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Last Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="U42-sH-yzs">
+                                        <rect key="frame" x="0.0" y="0.0" width="398" height="20.5"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="UXD-es-f46">
+                                        <rect key="frame" x="0.0" y="24.5" width="398" height="34"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                </subviews>
+                            </stackView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
+                            <constraint firstItem="nxx-0j-owb" firstAttribute="leading" secondItem="Aab-CN-uEr" secondAttribute="leading" constant="8" id="17U-KJ-ngt"/>
                             <constraint firstItem="2Z8-q0-fYI" firstAttribute="leading" secondItem="Aab-CN-uEr" secondAttribute="leading" constant="8" id="1Kq-2d-tku"/>
                             <constraint firstItem="Aab-CN-uEr" firstAttribute="trailing" secondItem="kyz-nl-kgo" secondAttribute="trailing" constant="16" id="38H-XB-Qws"/>
                             <constraint firstItem="kyz-nl-kgo" firstAttribute="leading" secondItem="Aab-CN-uEr" secondAttribute="leading" constant="16" id="4XL-WJ-MWz"/>
                             <constraint firstItem="Aab-CN-uEr" firstAttribute="bottom" secondItem="Y36-Au-fS4" secondAttribute="bottom" constant="16" id="H99-1y-37g"/>
                             <constraint firstItem="Aab-CN-uEr" firstAttribute="trailing" secondItem="2Z8-q0-fYI" secondAttribute="trailing" constant="8" id="HQe-uu-cVK"/>
+                            <constraint firstItem="Zdl-IK-lbF" firstAttribute="top" secondItem="nxx-0j-owb" secondAttribute="bottom" constant="16" id="HSo-9W-538"/>
                             <constraint firstItem="2Z8-q0-fYI" firstAttribute="top" secondItem="Aab-CN-uEr" secondAttribute="top" constant="32" id="IRT-gC-Xsg"/>
                             <constraint firstItem="VTu-kd-2Do" firstAttribute="centerY" secondItem="1EM-AO-NoL" secondAttribute="centerY" id="J3J-yt-qm9"/>
                             <constraint firstItem="Zdl-IK-lbF" firstAttribute="leading" secondItem="Aab-CN-uEr" secondAttribute="leading" constant="8" id="Ks8-nU-d8t"/>
                             <constraint firstItem="Aab-CN-uEr" firstAttribute="trailing" secondItem="Zdl-IK-lbF" secondAttribute="trailing" constant="8" id="Mwt-B4-YML"/>
-                            <constraint firstItem="Zdl-IK-lbF" firstAttribute="top" secondItem="2Z8-q0-fYI" secondAttribute="bottom" constant="16" id="Okn-40-r4y"/>
                             <constraint firstItem="VuF-hu-aFe" firstAttribute="leading" secondItem="Aab-CN-uEr" secondAttribute="leading" constant="8" id="SRF-FP-bC1"/>
                             <constraint firstItem="Y36-Au-fS4" firstAttribute="top" secondItem="kyz-nl-kgo" secondAttribute="bottom" constant="8" id="Wus-Ta-FiY"/>
                             <constraint firstItem="Aab-CN-uEr" firstAttribute="trailing" secondItem="VuF-hu-aFe" secondAttribute="trailing" constant="8" id="dHn-xw-ALP"/>
                             <constraint firstItem="Y36-Au-fS4" firstAttribute="leading" secondItem="Aab-CN-uEr" secondAttribute="leading" constant="16" id="feP-dN-iZW"/>
+                            <constraint firstItem="nxx-0j-owb" firstAttribute="top" secondItem="2Z8-q0-fYI" secondAttribute="bottom" constant="16" id="ghz-nf-ltx"/>
                             <constraint firstItem="VTu-kd-2Do" firstAttribute="centerX" secondItem="1EM-AO-NoL" secondAttribute="centerX" id="nIR-5X-jgI"/>
                             <constraint firstItem="Aab-CN-uEr" firstAttribute="trailing" secondItem="Y36-Au-fS4" secondAttribute="trailing" constant="16" id="xS8-2h-Hgh"/>
+                            <constraint firstItem="Aab-CN-uEr" firstAttribute="trailing" secondItem="nxx-0j-owb" secondAttribute="trailing" constant="8" id="xYV-JN-Uet"/>
                             <constraint firstItem="VuF-hu-aFe" firstAttribute="top" secondItem="Zdl-IK-lbF" secondAttribute="bottom" constant="16" id="xhy-XH-D22"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Aab-CN-uEr"/>
@@ -355,8 +373,9 @@
                     <connections>
                         <outlet property="animationView" destination="VTu-kd-2Do" id="73h-iv-LTD"/>
                         <outlet property="distanceSlider" destination="HAZ-Ao-CXN" id="dK4-fx-wJd"/>
-                        <outlet property="lblEmail" destination="mng-sv-0gq" id="B1q-Vh-BFR"/>
-                        <outlet property="lblName" destination="2hq-sb-lmt" id="3Jz-AF-NFO"/>
+                        <outlet property="txtEmail" destination="mng-sv-0gq" id="DK6-Fr-h3m"/>
+                        <outlet property="txtFirstName" destination="2hq-sb-lmt" id="ANa-sP-aMe"/>
+                        <outlet property="txtLastName" destination="UXD-es-f46" id="gHg-yy-EXu"/>
                         <segue destination="l8U-0f-O1G" kind="presentation" identifier="logout" modalPresentationStyle="fullScreen" id="Mtl-hP-m3k"/>
                     </connections>
                 </viewController>

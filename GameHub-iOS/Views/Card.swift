@@ -19,6 +19,9 @@ class CardView: UIView {
         super.init(frame: frame)
         let contentView = UIView(frame: frame)
         
+        // these are test labels that later on will be filled with real data
+        // I want these to take up the whole width of the contentView with left and right margins of 8
+        // I know I have not contrained these to the top or bottom, that'll follow once I understand how contraints work
         let lblName = UILabel()
         lblName.text = "test name"
         lblName.translatesAutoresizingMaskIntoConstraints = false
@@ -31,26 +34,29 @@ class CardView: UIView {
         let lblGameName = UILabel()
         lblGameName.text = "test game"
         lblGameName.translatesAutoresizingMaskIntoConstraints = false
-        
-        lblGameName.leftAnchor.constraint(equalTo: contentView.leftAnchor, constant: sideContraint)
-        lblGameName.rightAnchor.constraint(equalTo: contentView.rightAnchor, constant: sideContraint)
         contentView.addSubview(lblGameName)
+        contentView.addConstraints([
+            lblGameName.leftAnchor.constraint(equalTo: contentView.leftAnchor, constant: sideContraint),
+            lblGameName.rightAnchor.constraint(equalTo: contentView.rightAnchor, constant: sideContraint)
+        ])
         
         let lblPartyDate = UILabel()
         lblPartyDate.text = "test date"
         lblPartyDate.translatesAutoresizingMaskIntoConstraints = false
-        
-        lblPartyDate.leftAnchor.constraint(equalTo: contentView.leftAnchor, constant: sideContraint)
-        lblPartyDate.rightAnchor.constraint(equalTo: contentView.rightAnchor, constant: sideContraint)
         contentView.addSubview(lblPartyDate)
+        contentView.addConstraints([
+            lblPartyDate.leftAnchor.constraint(equalTo: contentView.leftAnchor, constant: sideContraint),
+            lblPartyDate.rightAnchor.constraint(equalTo: contentView.rightAnchor, constant: sideContraint)
+        ])
         
         let lblPartyWhere = UILabel()
         lblPartyWhere.text = "test location"
         lblPartyWhere.translatesAutoresizingMaskIntoConstraints = false
-        
-        lblPartyWhere.leftAnchor.constraint(equalTo: contentView.leftAnchor, constant: sideContraint)
-        lblPartyWhere.rightAnchor.constraint(equalTo: contentView.rightAnchor, constant: sideContraint)
         contentView.addSubview(lblPartyWhere)
+        contentView.addConstraints([
+            lblPartyWhere.leftAnchor.constraint(equalTo: contentView.leftAnchor, constant: sideContraint),
+            lblPartyWhere.rightAnchor.constraint(equalTo: contentView.rightAnchor, constant: sideContraint)
+        ])
         
         card.contentView = contentView
     }

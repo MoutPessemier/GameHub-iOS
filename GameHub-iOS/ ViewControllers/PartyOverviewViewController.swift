@@ -29,7 +29,11 @@ class PartyOverviewViewController: UIViewController, NetworkManagerDelegate {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        animationView.isHidden = true
+        if let animation = Animation.named("loading_infinity") {
+            animationView.animation = animation
+            animationView.loopMode = .loop
+            animationView.play()
+        }
     }
     
     // MARK: - Network Delegate
@@ -43,6 +47,8 @@ class PartyOverviewViewController: UIViewController, NetworkManagerDelegate {
     func updateParties(_ networkManager: NetworkManager, _ parties: [Party]) {
         self.joinedParties = parties
         DispatchQueue.main.async {
+            self.animationView.animation = nil
+            self.animationView.isHidden = true
             self.tableView.reloadData()
         }
     }
@@ -53,11 +59,11 @@ class PartyOverviewViewController: UIViewController, NetworkManagerDelegate {
     
     func didFail(with error: Error) {
         DispatchQueue.main.async {
-            if let animation = Animation.named("error", subdirectory: "Animations") {
+            if let animation = Animation.named("error") {
                 self.animationView.isHidden = false
                 self.animationView.animation = animation
-                self.animationView.loopMode = .loop
-                self.animationView.play()
+                self.animationView.loopMode = .repeat(3.0)
+                self.animationView.play { (finished) in self.animationView.stop() }
             }
         }
         print("---DIDFAIL WITH ERROR @ PARTYOVERVIEW", error.localizedDescription, error)
