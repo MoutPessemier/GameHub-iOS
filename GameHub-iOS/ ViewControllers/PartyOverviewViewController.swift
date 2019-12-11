@@ -63,7 +63,10 @@ class PartyOverviewViewController: UIViewController, NetworkManagerDelegate {
                 self.animationView.isHidden = false
                 self.animationView.animation = animation
                 self.animationView.loopMode = .repeat(3.0)
-                self.animationView.play { (finished) in self.animationView.stop() }
+                self.animationView.play { (finished) in
+                    self.animationView.stop()
+                    self.animationView.isHidden = true
+                }
             }
         }
         print("---DIDFAIL WITH ERROR @ PARTYOVERVIEW", error.localizedDescription, error)

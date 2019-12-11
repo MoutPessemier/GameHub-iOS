@@ -14,7 +14,7 @@ target 'GameHub-iOS' do
   pod "Koloda"
   
   # Material
-  pod 'Material', '~> 3.1.8'
+  # pod 'Material', '~> 3.1.8'
   
   # Loaf
   pod 'Loaf'

@@ -14,10 +14,10 @@ public struct Party: Codable {
     var name: String
     var date: Date
     var maxSize: Int = 4
-    var participants: [String]
+    var participants: [String?]
     var gameId: String
     var location: Location
-    var declines: [String]
+    var declines: [String?]
     
     init(id:String?, name: String, date: Date, maxSize: Int, participants: [String], gameId: String, location: Location, declines: [String]) {
         self.id = id

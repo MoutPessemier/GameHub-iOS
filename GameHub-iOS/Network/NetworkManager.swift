@@ -16,8 +16,7 @@ protocol NetworkManagerDelegate {
 }
 
 struct NetworkManager {
-    //let url = "https://game-hub-backend.herokuapp.com/"
-    let url = "https://76bdddc3.ngrok.io/"
+    let url = "https://game-hub-backend.herokuapp.com/"
     
     var delegate: NetworkManagerDelegate?
     

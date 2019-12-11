@@ -62,8 +62,6 @@ class CardStackViewController: UIViewController, CLLocationManagerDelegate, Netw
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         guard let locValue: CLLocationCoordinate2D = manager.location?.coordinate else { return }
         networkManager.getPartiesNearYou(maxDistance: 10, userId: "5decc1fa600ecf25c1e0433e", latitude: locValue.latitude, longitude: locValue.longitude)
-        // mock request 5db8838eaffe445c66076a88
-        // networkManager.getPartiesNearYou(maxDistance: 10, userId: "5decc1fa600ecf25c1e0433e", latitude: 50.92, longitude: 4.06)
     }
     
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
@@ -97,18 +95,18 @@ class CardStackViewController: UIViewController, CLLocationManagerDelegate, Netw
                 self.animationView.play { (finished) in self.animationView.stop() }
             }
         }
-        print("---DIDFAIL WITH ERROR @ CARDSTACK---", error.localizedDescription)
+        print("---DIDFAIL WITH ERROR @ CARDSTACK---", error, error.localizedDescription)
     }
     
     // MARK: - Swipe
     @IBAction func swipeRight(_ sender: Any) {
         stackView.swipe(.right)
-        networkManager.joinParty(partyId: "5deeb967d34f20001e0762fa", userId: "5decc1fa600ecf25c1e0433e")
+        networkManager.joinParty(partyId: "5deff5f4b148ff001e24aa23", userId: "5decc1fa600ecf25c1e0433e")
     }
     
     @IBAction func swipeLeft(_ sender: Any) {
         stackView.swipe(.left)
-        networkManager.declineParty(partyId: "5deeb967d34f20001e0762fa", userId: "5decc1fa600ecf25c1e0433e")
+        networkManager.declineParty(partyId: "5deff5f4b148ff001e24aa23", userId: "5decc1fa600ecf25c1e0433e")
     }
 }
 
@@ -135,7 +133,84 @@ extension CardStackViewController: KolodaViewDataSource {
     }
     
     func koloda(_ koloda: KolodaView, viewForCardAt index: Int) -> UIView {
-        return CardView(frame: CGRect.init(x: 0, y: 0, width: 350, height: 500), party: parties[index])
+        let sideContraint: CGFloat = 16.0
+        let topConstraint: CGFloat = 32.0
+        let textSizeTitle: CGFloat = 32.0
+        let textSizeNormal: CGFloat = 24.0
+        let textSizeDescription: CGFloat = 20.0
+        
+        let party = parties[index]
+        let game = games.first {
+            g in g.id == party.gameId
+        }
+        
+        let contentView = UIView(frame: CGRect(x: 0, y: 0, width: 350, height: 500))
+        contentView.layer.cornerRadius = 10
+        contentView.layer.borderWidth = 2
+        contentView.layer.borderColor = UIColor.lightGray.cgColor
+        contentView.backgroundColor = .white
+        contentView.layer.shadowColor = UIColor.black.cgColor
+        contentView.layer.shadowOpacity = 0.5
+        contentView.layer.shadowOffset = .init(width: 0, height: 5)
+        contentView.layer.shadowRadius = 5
+
+        let lblName = UILabel()
+        lblName.text = party.name
+        lblName.textAlignment = .center
+        lblName.font = UIFont.systemFont(ofSize: textSizeTitle)
+        lblName.numberOfLines = 0
+
+        lblName.translatesAutoresizingMaskIntoConstraints = false
+        contentView.addSubview(lblName)
+        contentView.addConstraints([
+            lblName.leftAnchor.constraint(equalTo: contentView.leftAnchor, constant: sideContraint),
+            lblName.rightAnchor.constraint(equalTo: contentView.rightAnchor, constant: -sideContraint),
+            lblName.topAnchor.constraint(equalTo: contentView.topAnchor, constant: topConstraint)
+        ])
+
+        let lblGameName = UILabel()
+        lblGameName.text = game?.name
+        lblGameName.textAlignment = .center
+         lblGameName.font = UIFont.systemFont(ofSize: textSizeNormal)
+
+        lblGameName.translatesAutoresizingMaskIntoConstraints = false
+        contentView.addSubview(lblGameName)
+        contentView.addConstraints([
+            lblGameName.leftAnchor.constraint(equalTo: contentView.leftAnchor, constant: sideContraint),
+            lblGameName.rightAnchor.constraint(equalTo: contentView.rightAnchor, constant: -sideContraint),
+            lblGameName.topAnchor.constraint(equalTo: lblName.bottomAnchor, constant: topConstraint * 2)
+        ])
+
+        let lblGameDescription = UILabel()
+        lblGameDescription.text = game?.description
+        lblGameDescription.textAlignment = .center
+         lblGameDescription.font = UIFont.systemFont(ofSize: textSizeDescription)
+        lblGameDescription.lineBreakMode = .byWordWrapping
+        lblGameDescription.numberOfLines = 0
+
+        lblGameDescription.translatesAutoresizingMaskIntoConstraints = false
+        contentView.addSubview(lblGameDescription)
+        contentView.addConstraints([
+            lblGameDescription.leftAnchor.constraint(equalTo: contentView.leftAnchor, constant: sideContraint),
+            lblGameDescription.rightAnchor.constraint(equalTo: contentView.rightAnchor, constant: -sideContraint),
+            lblGameDescription.topAnchor.constraint(equalTo: lblGameName.bottomAnchor, constant: topConstraint * 2)
+        ])
+
+        let lblPartyDate = UILabel()
+        lblPartyDate.text = String(party.date.iso8601.split { $0 == "T" }[0]).replacingOccurrences(of: "-", with: "/")
+        lblPartyDate.textAlignment = .center
+         lblPartyDate.font = UIFont.systemFont(ofSize: textSizeNormal)
+
+        lblPartyDate.translatesAutoresizingMaskIntoConstraints = false
+        contentView.addSubview(lblPartyDate)
+        contentView.addConstraints([
+            lblPartyDate.leftAnchor.constraint(equalTo: contentView.leftAnchor, constant: sideContraint),
+            lblPartyDate.rightAnchor.constraint(equalTo: contentView.rightAnchor, constant: -sideContraint),
+            lblPartyDate.topAnchor.constraint(equalTo: lblGameDescription.bottomAnchor, constant: topConstraint * 2)
+        ])
+
+        return contentView
+//        return CardView(frame: CGRect(x: 0, y: 0, width: 350, height: 500), party: party, game: game)
     }
     
     func koloda(_ koloda: KolodaView, viewForCardOverlayAt index: Int) -> OverlayView? {
