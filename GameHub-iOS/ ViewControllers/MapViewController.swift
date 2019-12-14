@@ -13,10 +13,13 @@ import Lottie
 class MapViewController: UIViewController, CLLocationManagerDelegate, NetworkManagerDelegate, MKMapViewDelegate {
     
     private var networkManager: NetworkManager = NetworkManager()
+    private let locationManager = CLLocationManager()
+    private let loggedInUser = SessionManager.shared.user!
+    private let radius: CLLocationDistance = 500
     private var parties: [Party] = []
+    
     @IBOutlet var map: MKMapView!
-    private let radius: CLLocationDistance = 30000
-    let locationManager = CLLocationManager()
+
     
     // MARK: - LifeCycle
     override func viewDidLoad() {
@@ -57,8 +60,7 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, NetworkMan
         guard let locValue: CLLocationCoordinate2D = manager.location?.coordinate else { return }
         let currentLocation = CLLocation(latitude: locValue.latitude, longitude: locValue.longitude)
         centerMap(currentLocation)
-        networkManager.getPartiesNearYou(maxDistance: 10, userId: "5decc1fa600ecf25c1e0433e", latitude: locValue.latitude, longitude: locValue.longitude)
-        
+        networkManager.getPartiesNearYou(maxDistance: 100, userId: loggedInUser.id!, latitude: locValue.latitude, longitude: locValue.longitude)
     }
     
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
@@ -79,6 +81,10 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, NetworkMan
     }
     
     func updateUser(_ networkManager: NetworkManager, _ user: User) {
+        fatalError("NotNeededException: This data is not needed in this controller")
+    }
+    
+    func doesUserExist(_ networkManager: NetworkManager, _ userExists: Bool) {
         fatalError("NotNeededException: This data is not needed in this controller")
     }
     

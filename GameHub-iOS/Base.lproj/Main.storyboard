@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14868" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="enX-XB-Qbr">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14868" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="l8U-0f-O1G">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14824"/>
@@ -156,6 +156,12 @@
                                 <rect key="frame" x="32" y="108" width="350" height="500"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="There are no parties nearby" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="F9l-rc-Hkq">
+                                <rect key="frame" x="101.5" y="437.5" width="211" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="V62-XU-pV4" customClass="AnimationView" customModule="Lottie">
                                 <rect key="frame" x="82" y="323" width="250" height="250"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
@@ -169,12 +175,15 @@
                         <constraints>
                             <constraint firstItem="V62-XU-pV4" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="317-Ob-hbI"/>
                             <constraint firstItem="V62-XU-pV4" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="Eik-vX-BZi"/>
+                            <constraint firstItem="F9l-rc-Hkq" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="GLe-YY-GRe"/>
+                            <constraint firstItem="F9l-rc-Hkq" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="JQb-Ag-IGk"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Home" image="house" catalog="system" id="v7j-G6-r0y"/>
                     <connections>
                         <outlet property="animationView" destination="V62-XU-pV4" id="ose-CH-ZTi"/>
+                        <outlet property="lblNoParties" destination="F9l-rc-Hkq" id="Wub-84-awb"/>
                         <outlet property="stackView" destination="pHt-gN-Opf" id="gmk-WD-uBt"/>
                     </connections>
                 </viewController>
@@ -316,7 +325,7 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                                 <connections>
-                                    <action selector="logout:" destination="r3e-dF-Jdy" eventType="touchUpInside" id="bD0-8h-9GU"/>
+                                    <action selector="logout:" destination="r3e-dF-Jdy" eventType="touchUpInside" id="Cen-8D-ISi"/>
                                 </connections>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VTu-kd-2Do" customClass="AnimationView" customModule="Lottie">
@@ -376,10 +385,11 @@
                         <outlet property="txtEmail" destination="mng-sv-0gq" id="DK6-Fr-h3m"/>
                         <outlet property="txtFirstName" destination="2hq-sb-lmt" id="ANa-sP-aMe"/>
                         <outlet property="txtLastName" destination="UXD-es-f46" id="gHg-yy-EXu"/>
-                        <segue destination="l8U-0f-O1G" kind="presentation" identifier="logout" modalPresentationStyle="fullScreen" id="Mtl-hP-m3k"/>
+                        <segue destination="nor-78-Owe" kind="unwind" identifier="unwindToLogin" unwindAction="unwindToLogin:" id="KeL-zZ-WBZ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cSW-cW-0BT" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <exit id="nor-78-Owe" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="1957.9710144927537" y="-599.33035714285711"/>
         </scene>

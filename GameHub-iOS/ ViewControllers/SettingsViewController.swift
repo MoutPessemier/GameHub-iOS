@@ -13,9 +13,9 @@ import Lottie
 
 class SettingsViewController: UIViewController, NetworkManagerDelegate {
     
-    private var isAuthenticated = true
-    private var loggedInUser: User? = nil
     private var networkManager: NetworkManager = NetworkManager()
+    private var loggedInUser = SessionManager.shared.user!
+    
     @IBOutlet private var animationView: AnimationView!
     @IBOutlet private var txtFirstName: UITextField!
     @IBOutlet private var txtLastName: UITextField!
@@ -26,35 +26,42 @@ class SettingsViewController: UIViewController, NetworkManagerDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         networkManager.delegate = self
-        networkManager.getUser(email: "moutpessemier@hotmail.com")
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        if let animation = Animation.named("loading_infinity") {
-            animationView.animation = animation
-            animationView.loopMode = .loop
-            animationView.play()
-        }
+        animationView.isHidden = true
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        updateSettings(loggedInUser)
     }
     
     // MARK: - Auth0
     @IBAction private func logout(_ sender: Any) {
-        Auth0
-            .webAuth()
-            .clearSession(federated:false){
-                switch $0{
-                case true:
-                    DispatchQueue.main.async {
-                        self.isAuthenticated = false
-                        self.performSegue(withIdentifier: "logout", sender: self)
-                    }
-                case false:
-                    DispatchQueue.main.async {
-                        Loaf("Something went wrong, please try again!", state: .error, location: .bottom, presentingDirection: .vertical, dismissingDirection: .vertical, sender: self).show()
-                    }
-                }
-        }
+//        Auth0
+//            .webAuth()
+//            .clearSession(federated:false){
+//                switch $0{
+//                case true:
+//                    SessionManager.shared.logout { (error) in
+//                        if let error = error {
+//                            print("---LOGOUT---", error, error.localizedDescription)
+//                            DispatchQueue.main.async {
+//                                Loaf.init("Something went wrong, try again!", state: .error, location: .bottom, presentingDirection: .vertical, dismissingDirection: .vertical, sender: self).show()
+//                            }
+//                        }
+//                        DispatchQueue.main.async {
+//                            self.performSegue(withIdentifier: "unwindToLogin", sender: self)
+//                        }
+//                    }
+//                case false:
+//                    DispatchQueue.main.async {
+//                        Loaf("Something went wrong, please try again!", state: .error, location: .bottom, presentingDirection: .vertical, dismissingDirection: .vertical, sender: self).show()
+//                    }
+//                }
+//        }
     }
     
     @IBAction private func saveChanges(_ sender: Any) {
@@ -63,14 +70,12 @@ class SettingsViewController: UIViewController, NetworkManagerDelegate {
         guard let email = txtEmail.text else { return }
         let distance = distanceSlider.value
         
-        guard var user = loggedInUser else  { return }
-        
-        user.email = email
-        user.maxDistance = Int(distance)
-        user.firstName = firstName
-        user.lastName = lastName
-        networkManager.updateUser(user: user)
-        updateSettings(user)
+        loggedInUser.email = email
+        loggedInUser.maxDistance = Int(distance)
+        loggedInUser.firstName = firstName
+        loggedInUser.lastName = lastName
+        networkManager.updateUser(user: loggedInUser)
+        updateSettings(loggedInUser)
     }
     
     // MARK: - NetworkDelegates
@@ -79,6 +84,10 @@ class SettingsViewController: UIViewController, NetworkManagerDelegate {
     }
     
     func updateParties(_ networkManager: NetworkManager, _ parties: [Party]) {
+        fatalError("NotNeededException: This data is not needed in this controller")
+    }
+    
+    func doesUserExist(_ networkManager: NetworkManager, _ userExists: Bool) {
         fatalError("NotNeededException: This data is not needed in this controller")
     }
     
@@ -97,7 +106,10 @@ class SettingsViewController: UIViewController, NetworkManagerDelegate {
                 self.animationView.isHidden = false
                 self.animationView.animation = animation
                 self.animationView.loopMode = .repeat(3.0)
-                self.animationView.play { (finished) in self.animationView.stop() }
+                self.animationView.play { (finished) in
+                    self.animationView.stop()
+                    self.animationView.isHidden = true
+                }
             }
         }
         print("---DIDFAIL WITH ERROR @ SETTINGS---", error.localizedDescription)

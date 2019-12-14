@@ -12,11 +12,13 @@ import Lottie
 class PartyOverviewViewController: UIViewController, NetworkManagerDelegate {
     
     private var networkManager: NetworkManager = NetworkManager()
+    private let loggedInUser = SessionManager.shared.user!
     private var joinedParties: [Party] = []
     private var games: [Game] = []
+    
     @IBOutlet private var tableView: UITableView!
     @IBOutlet private var animationView: AnimationView!
-    
+
     // MARK: - LifeCycle
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -24,11 +26,11 @@ class PartyOverviewViewController: UIViewController, NetworkManagerDelegate {
         tableView.register(UINib(nibName: "PartyTableViewCell", bundle: nil), forCellReuseIdentifier: "ReusableCell")
         networkManager.delegate = self
         networkManager.getGames()
-        networkManager.getJoinedParties(userId: "5db8838eaffe445c66076a88")
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        networkManager.getJoinedParties(userId: loggedInUser.id!)
         if let animation = Animation.named("loading_infinity") {
             animationView.animation = animation
             animationView.loopMode = .loop
@@ -54,6 +56,10 @@ class PartyOverviewViewController: UIViewController, NetworkManagerDelegate {
     }
     
     func updateUser(_ networkManager: NetworkManager, _ user: User) {
+        fatalError("NotNeededException: This data is not needed in this controller")
+    }
+    
+    func doesUserExist(_ networkManager: NetworkManager, _ userExists: Bool) {
         fatalError("NotNeededException: This data is not needed in this controller")
     }
     

@@ -13,6 +13,7 @@
 		4E3EE1A92399AFE1006E1670 /* PartyIdentifierDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E3EE1A82399AFE1006E1670 /* PartyIdentifierDTO.swift */; };
 		4E3EE1AD239A5DAA006E1670 /* Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E3EE1AC239A5DAA006E1670 /* Card.swift */; };
 		4E48CC572393B6FD009680DD /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E48CC562393B6FD009680DD /* MapViewController.swift */; };
+		4E7B51BD23A29D400005CF46 /* SessionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E7B51BC23A29D400005CF46 /* SessionManager.swift */; };
 		4E7EE054238C20FC0070FC1D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E7EE053238C20FC0070FC1D /* AppDelegate.swift */; };
 		4E7EE056238C20FC0070FC1D /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E7EE055238C20FC0070FC1D /* SceneDelegate.swift */; };
 		4E7EE05B238C20FC0070FC1D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4E7EE059238C20FC0070FC1D /* Main.storyboard */; };
@@ -38,6 +39,9 @@
 		4EC71ADB2393131000F2FA1A /* PartiesNetworkContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EC71ADA2393131000F2FA1A /* PartiesNetworkContainer.swift */; };
 		4EC71ADD2393163C00F2FA1A /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EC71ADC2393163C00F2FA1A /* Location.swift */; };
 		4ED7B1D42395D9FC004F62D2 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ED7B1D32395D9FC004F62D2 /* SettingsViewController.swift */; };
+		4EDC2EA723A4E56B003A0CB8 /* RegisterDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EDC2EA623A4E56B003A0CB8 /* RegisterDTO.swift */; };
+		4EDC2EA923A4F9A7003A0CB8 /* LoginDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EDC2EA823A4F9A7003A0CB8 /* LoginDTO.swift */; };
+		4EDC2EAB23A4FC6B003A0CB8 /* UserNetworkContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EDC2EAA23A4FC6B003A0CB8 /* UserNetworkContainer.swift */; };
 		4EDD4DDC239C33EC00595F56 /* error.json in Resources */ = {isa = PBXBuildFile; fileRef = 4EDD4DDB239C33EC00595F56 /* error.json */; };
 		4EDD4DE0239C492900595F56 /* DateParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EDD4DDF239C492900595F56 /* DateParser.swift */; };
 		72061261DC51E0367A19F272 /* Pods_GameHub_iOSTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 78E6BE7CCAD36CC2847CD229 /* Pods_GameHub_iOSTests.framework */; };
@@ -67,6 +71,7 @@
 		4E3EE1A82399AFE1006E1670 /* PartyIdentifierDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PartyIdentifierDTO.swift; sourceTree = "<group>"; };
 		4E3EE1AC239A5DAA006E1670 /* Card.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Card.swift; sourceTree = "<group>"; };
 		4E48CC562393B6FD009680DD /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
+		4E7B51BC23A29D400005CF46 /* SessionManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionManager.swift; sourceTree = "<group>"; };
 		4E7EE050238C20FC0070FC1D /* GameHub-iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "GameHub-iOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		4E7EE053238C20FC0070FC1D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4E7EE055238C20FC0070FC1D /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -98,6 +103,9 @@
 		4EC71ADA2393131000F2FA1A /* PartiesNetworkContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PartiesNetworkContainer.swift; sourceTree = "<group>"; };
 		4EC71ADC2393163C00F2FA1A /* Location.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Location.swift; sourceTree = "<group>"; };
 		4ED7B1D32395D9FC004F62D2 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
+		4EDC2EA623A4E56B003A0CB8 /* RegisterDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterDTO.swift; sourceTree = "<group>"; };
+		4EDC2EA823A4F9A7003A0CB8 /* LoginDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginDTO.swift; sourceTree = "<group>"; };
+		4EDC2EAA23A4FC6B003A0CB8 /* UserNetworkContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserNetworkContainer.swift; sourceTree = "<group>"; };
 		4EDD4DDB239C33EC00595F56 /* error.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = error.json; sourceTree = "<group>"; };
 		4EDD4DDF239C492900595F56 /* DateParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateParser.swift; sourceTree = "<group>"; };
 		5F2944EE841873EEC5F3114D /* Pods-GameHub-iOS-GameHub-iOSUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GameHub-iOS-GameHub-iOSUITests.debug.xcconfig"; path = "Target Support Files/Pods-GameHub-iOS-GameHub-iOSUITests/Pods-GameHub-iOS-GameHub-iOSUITests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -146,6 +154,14 @@
 			path = Animations;
 			sourceTree = "<group>";
 		};
+		4E7B51BB23A29D290005CF46 /* Auth0 */ = {
+			isa = PBXGroup;
+			children = (
+				4E7B51BC23A29D400005CF46 /* SessionManager.swift */,
+			);
+			path = Auth0;
+			sourceTree = "<group>";
+		};
 		4E7EE047238C20FC0070FC1D = {
 			isa = PBXGroup;
 			children = (
@@ -171,6 +187,7 @@
 		4E7EE052238C20FC0070FC1D /* GameHub-iOS */ = {
 			isa = PBXGroup;
 			children = (
+				4E7B51BB23A29D290005CF46 /* Auth0 */,
 				4E48CC582393F250009680DD /* Animations */,
 				4EAC10C0238D290F0092D423 /*  ViewControllers */,
 				4EAC10B3238D19D10092D423 /* Network */,
@@ -238,6 +255,9 @@
 				4EC71ADA2393131000F2FA1A /* PartiesNetworkContainer.swift */,
 				4E3EE1A82399AFE1006E1670 /* PartyIdentifierDTO.swift */,
 				4EDD4DDF239C492900595F56 /* DateParser.swift */,
+				4EDC2EA623A4E56B003A0CB8 /* RegisterDTO.swift */,
+				4EDC2EA823A4F9A7003A0CB8 /* LoginDTO.swift */,
+				4EDC2EAA23A4FC6B003A0CB8 /* UserNetworkContainer.swift */,
 			);
 			path = Network;
 			sourceTree = "<group>";
@@ -521,21 +541,25 @@
 			buildActionMask = 2147483647;
 			files = (
 				4EC71AD92392FFE000F2FA1A /* GamesNetworkContainer.swift in Sources */,
+				4E7B51BD23A29D400005CF46 /* SessionManager.swift in Sources */,
 				4E3EE1A92399AFE1006E1670 /* PartyIdentifierDTO.swift in Sources */,
 				4EAC10B5238D1AFF0092D423 /* Game.swift in Sources */,
 				4EC71AD52392C79700F2FA1A /* PartyOverviewViewController.swift in Sources */,
 				4ED7B1D42395D9FC004F62D2 /* SettingsViewController.swift in Sources */,
 				4EAC10BD238D1BB20092D423 /* UserRole.swift in Sources */,
 				4EC71ADD2393163C00F2FA1A /* Location.swift in Sources */,
+				4EDC2EA723A4E56B003A0CB8 /* RegisterDTO.swift in Sources */,
 				4E3EE1AD239A5DAA006E1670 /* Card.swift in Sources */,
 				4E7EE054238C20FC0070FC1D /* AppDelegate.swift in Sources */,
 				4EAC10B9238D1B8B0092D423 /* Party.swift in Sources */,
 				4E48CC572393B6FD009680DD /* MapViewController.swift in Sources */,
 				4EA0D793239BC2470044A245 /* SwipeOverlay.swift in Sources */,
 				4EC71ADB2393131000F2FA1A /* PartiesNetworkContainer.swift in Sources */,
+				4EDC2EAB23A4FC6B003A0CB8 /* UserNetworkContainer.swift in Sources */,
 				4EAC10C5238D2DB10092D423 /* PartyTableViewCell.swift in Sources */,
 				4EAC10BF238D1BE10092D423 /* User.swift in Sources */,
 				4EAC10B7238D1B310092D423 /* GameType.swift in Sources */,
+				4EDC2EA923A4F9A7003A0CB8 /* LoginDTO.swift in Sources */,
 				4E7EE056238C20FC0070FC1D /* SceneDelegate.swift in Sources */,
 				4EC71AD32392BEB200F2FA1A /* AuthenticationViewController.swift in Sources */,
 				4EC71AD72392E2F400F2FA1A /* NetworkManager.swift in Sources */,

@@ -7,21 +7,23 @@
 //
 
 import UIKit
-import Auth0
 import CoreLocation
 import Lottie
-import Loaf
 import Koloda
 
 class CardStackViewController: UIViewController, CLLocationManagerDelegate, NetworkManagerDelegate {
     
     private var networkManager: NetworkManager = NetworkManager()
+    private let locationManager = CLLocationManager()
+    private let loggedInUser = SessionManager.shared.user!
     private var games: [Game] = []
     private var parties: [Party] = []
-    private var user: User? = nil
-    private let locationManager = CLLocationManager()
+    private var currentParty: Party? = nil
+    
     @IBOutlet private var stackView: KolodaView!
     @IBOutlet private var animationView: AnimationView!
+    @IBOutlet var lblNoParties: UILabel!
+    
     
     // MARK: - LifeCycle
     override func viewDidLoad() {
@@ -30,13 +32,11 @@ class CardStackViewController: UIViewController, CLLocationManagerDelegate, Netw
         stackView.delegate = self
         networkManager.delegate = self
         networkManager.getGames()
-        networkManager.getUser(email: "moutpessemier@hotmail.com")
+        lblNoParties.isHidden = true
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
-
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -61,7 +61,7 @@ class CardStackViewController: UIViewController, CLLocationManagerDelegate, Netw
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         guard let locValue: CLLocationCoordinate2D = manager.location?.coordinate else { return }
-        networkManager.getPartiesNearYou(maxDistance: 10, userId: "5decc1fa600ecf25c1e0433e", latitude: locValue.latitude, longitude: locValue.longitude)
+        networkManager.getPartiesNearYou(maxDistance: 100, userId: loggedInUser.id!, latitude: locValue.latitude, longitude: locValue.longitude)
     }
     
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
@@ -83,7 +83,11 @@ class CardStackViewController: UIViewController, CLLocationManagerDelegate, Netw
     }
     
     func updateUser(_ networkManager: NetworkManager, _ user: User) {
-        self.user = user
+        fatalError("NotNeededException: This data is not needed in this controller")
+    }
+    
+    func doesUserExist(_ networkManager: NetworkManager, _ userExists: Bool) {
+        fatalError("NotNeededException: This data is not needed in this controller")
     }
     
     func didFail(with error: Error) {
@@ -92,8 +96,13 @@ class CardStackViewController: UIViewController, CLLocationManagerDelegate, Netw
                 self.animationView.isHidden = false
                 self.animationView.animation = animation
                 self.animationView.loopMode = .repeat(3.0)
-                self.animationView.play { (finished) in self.animationView.stop() }
+                self.animationView.play { (finished) in
+                    self.animationView.stop()
+                    self.animationView.isHidden = true
+                }
+                
             }
+            
         }
         print("---DIDFAIL WITH ERROR @ CARDSTACK---", error, error.localizedDescription)
     }
@@ -101,23 +110,31 @@ class CardStackViewController: UIViewController, CLLocationManagerDelegate, Netw
     // MARK: - Swipe
     @IBAction func swipeRight(_ sender: Any) {
         stackView.swipe(.right)
-        networkManager.joinParty(partyId: "5deff5f4b148ff001e24aa23", userId: "5decc1fa600ecf25c1e0433e")
     }
     
     @IBAction func swipeLeft(_ sender: Any) {
         stackView.swipe(.left)
-        networkManager.declineParty(partyId: "5deff5f4b148ff001e24aa23", userId: "5decc1fa600ecf25c1e0433e")
     }
 }
 
 // MARK: - KolodaView Delegate
 extension CardStackViewController: KolodaViewDelegate {
     func kolodaDidRunOutOfCards(_ koloda: KolodaView) {
-        koloda.reloadData()
+        lblNoParties.isHidden = false
     }
     
     func koloda(_ koloda: KolodaView, didSelectCardAt index: Int) {
-        // don't know what needs to happen here
+        print("---DIDSELECTCARDAT---", index)
+    }
+    
+    func koloda(_ koloda: KolodaView, didSwipeCardAt index: Int, in direction: SwipeResultDirection) {
+        let currentParty = parties[index]
+        print(currentParty)
+        if direction == .left {
+            networkManager.declineParty(partyId: currentParty.id!, userId: loggedInUser.id!)
+        } else if direction == .right {
+            networkManager.joinParty(partyId: currentParty.id!, userId: loggedInUser.id!)
+        }
     }
 }
 
@@ -133,16 +150,16 @@ extension CardStackViewController: KolodaViewDataSource {
     }
     
     func koloda(_ koloda: KolodaView, viewForCardAt index: Int) -> UIView {
+        let party = parties[index]
+        let game = games.first {
+            g in g.id == party.gameId
+        }
+        currentParty = party
         let sideContraint: CGFloat = 16.0
         let topConstraint: CGFloat = 32.0
         let textSizeTitle: CGFloat = 32.0
         let textSizeNormal: CGFloat = 24.0
         let textSizeDescription: CGFloat = 20.0
-        
-        let party = parties[index]
-        let game = games.first {
-            g in g.id == party.gameId
-        }
         
         let contentView = UIView(frame: CGRect(x: 0, y: 0, width: 350, height: 500))
         contentView.layer.cornerRadius = 10
@@ -153,13 +170,13 @@ extension CardStackViewController: KolodaViewDataSource {
         contentView.layer.shadowOpacity = 0.5
         contentView.layer.shadowOffset = .init(width: 0, height: 5)
         contentView.layer.shadowRadius = 5
-
+        
         let lblName = UILabel()
         lblName.text = party.name
         lblName.textAlignment = .center
         lblName.font = UIFont.systemFont(ofSize: textSizeTitle)
         lblName.numberOfLines = 0
-
+        
         lblName.translatesAutoresizingMaskIntoConstraints = false
         contentView.addSubview(lblName)
         contentView.addConstraints([
@@ -167,12 +184,12 @@ extension CardStackViewController: KolodaViewDataSource {
             lblName.rightAnchor.constraint(equalTo: contentView.rightAnchor, constant: -sideContraint),
             lblName.topAnchor.constraint(equalTo: contentView.topAnchor, constant: topConstraint)
         ])
-
+        
         let lblGameName = UILabel()
         lblGameName.text = game?.name
         lblGameName.textAlignment = .center
-         lblGameName.font = UIFont.systemFont(ofSize: textSizeNormal)
-
+        lblGameName.font = UIFont.systemFont(ofSize: textSizeNormal)
+        
         lblGameName.translatesAutoresizingMaskIntoConstraints = false
         contentView.addSubview(lblGameName)
         contentView.addConstraints([
@@ -180,14 +197,14 @@ extension CardStackViewController: KolodaViewDataSource {
             lblGameName.rightAnchor.constraint(equalTo: contentView.rightAnchor, constant: -sideContraint),
             lblGameName.topAnchor.constraint(equalTo: lblName.bottomAnchor, constant: topConstraint * 2)
         ])
-
+        
         let lblGameDescription = UILabel()
         lblGameDescription.text = game?.description
         lblGameDescription.textAlignment = .center
-         lblGameDescription.font = UIFont.systemFont(ofSize: textSizeDescription)
+        lblGameDescription.font = UIFont.systemFont(ofSize: textSizeDescription)
         lblGameDescription.lineBreakMode = .byWordWrapping
         lblGameDescription.numberOfLines = 0
-
+        
         lblGameDescription.translatesAutoresizingMaskIntoConstraints = false
         contentView.addSubview(lblGameDescription)
         contentView.addConstraints([
@@ -195,12 +212,12 @@ extension CardStackViewController: KolodaViewDataSource {
             lblGameDescription.rightAnchor.constraint(equalTo: contentView.rightAnchor, constant: -sideContraint),
             lblGameDescription.topAnchor.constraint(equalTo: lblGameName.bottomAnchor, constant: topConstraint * 2)
         ])
-
+        
         let lblPartyDate = UILabel()
         lblPartyDate.text = String(party.date.iso8601.split { $0 == "T" }[0]).replacingOccurrences(of: "-", with: "/")
         lblPartyDate.textAlignment = .center
-         lblPartyDate.font = UIFont.systemFont(ofSize: textSizeNormal)
-
+        lblPartyDate.font = UIFont.systemFont(ofSize: textSizeNormal)
+        
         lblPartyDate.translatesAutoresizingMaskIntoConstraints = false
         contentView.addSubview(lblPartyDate)
         contentView.addConstraints([
@@ -208,9 +225,8 @@ extension CardStackViewController: KolodaViewDataSource {
             lblPartyDate.rightAnchor.constraint(equalTo: contentView.rightAnchor, constant: -sideContraint),
             lblPartyDate.topAnchor.constraint(equalTo: lblGameDescription.bottomAnchor, constant: topConstraint * 2)
         ])
-
+        
         return contentView
-//        return CardView(frame: CGRect(x: 0, y: 0, width: 350, height: 500), party: party, game: game)
     }
     
     func koloda(_ koloda: KolodaView, viewForCardOverlayAt index: Int) -> OverlayView? {

@@ -10,49 +10,93 @@ import UIKit
 import Auth0
 import Loaf
 
-class AuthenticationViewController: UIViewController {
-    private var isAuthenticated = false
-    private static var amountVisited: Int = 0
+class AuthenticationViewController: UIViewController, NetworkManagerDelegate {
+    private let credentialsManager = CredentialsManager(authentication: Auth0.authentication())
+    private var networkManager = NetworkManager()
     
     // MARK: - LifeCycle
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        if AuthenticationViewController.amountVisited == 1 {
-            Loaf("Successful logout", state: .success, location: .bottom, presentingDirection: .vertical, dismissingDirection: .vertical, sender: self).show()
-            AuthenticationViewController.amountVisited += 1
-        }
-    }
-    
     override func viewDidLoad() {
         super.viewDidLoad()
+        networkManager.delegate = self
     }
     
     // MARK: - Auth0
-    @IBAction func showLogin(_ sender: UIButton) {
+    @IBAction func showLogin(_ sender: Any) {
+        login()
+    }
+    
+    private func login() {
         guard let clientInfo = plistValues(bundle: Bundle.main) else { return }
         Auth0
             .webAuth()
-            .scope("openid profile")
-            .audience("https://" + clientInfo.domain + "/userinfo")
-            .start {
-                switch $0 {
+            .scope("openid profile read:current_user")
+            .audience("https://" + clientInfo.domain + "/api/v2/")
+            .start { (result) in
+                switch result {
                 case .failure(let error):
-                    Loaf("Something went wrong, please try again!", state: .error, location: .bottom, presentingDirection: .vertical, dismissingDirection: .vertical, sender: self).show()
-                    print("Error: \(error)")
+                    print("---WEBAUTH---", error)
                 case .success(let credentials):
-                    guard credentials.accessToken != nil else { return }
-                    //send accestoken to get user info back
-                    DispatchQueue.main.async {
-                        self.isAuthenticated = true
-                        self.performSegue(withIdentifier: "authenticate", sender: self)
-                        
+                    if(!SessionManager.shared.store(credentials: credentials)) {
+                        print("Failed to store credentials")
+                    } else {
+                        SessionManager.shared.retrieveProfile { error in
+                            DispatchQueue.main.async {
+                                guard error == nil else {
+                                    print("Failed to retrieve profile: \(String(describing: error))")
+                                    return self.login()
+                                }
+                                SessionManager.shared.getMetaData { (error) in
+                                    if let error = error {
+                                        print("---GETMETADATA---", error)
+                                    }
+                                    self.networkManager.doesUserExist(email: SessionManager.shared.profile!.name!)
+                                }
+                            }
+                        }
                     }
                 }
         }
     }
+    
+    // MARK: - NetworkDelegate
+    func updateGames(_ networkManager: NetworkManager, _ games: [Game]) {
+        fatalError("NotNeededException: This data is not needed in this controller")
+    }
+    
+    func updateParties(_ networkManager: NetworkManager, _ parties: [Party]) {
+        fatalError("NotNeededException: This data is not needed in this controller")
+    }
+    
+    func updateUser(_ networkManager: NetworkManager, _ user: User) {
+        SessionManager.shared.user = user
+        DispatchQueue.main.async {
+            self.performSegue(withIdentifier: "authenticate", sender: self)
+        }
+    }
+    
+    func doesUserExist(_ networkManager: NetworkManager, _ userExists: Bool) {
+        let email = SessionManager.shared.profile!.name!
+        if userExists {
+            let loginDTO = LoginDTO(email: email)
+            networkManager.login(loginDTO: loginDTO)
+        } else {
+            let firstName = SessionManager.shared.metadata!["fname"]! as! String
+            let lastName = SessionManager.shared.metadata!["lname"]! as! String
+            let registerDTO = RegisterDTO(firstName: firstName, lastName: lastName, email: email)
+            networkManager.register(registerDTO: registerDTO)
+        }
+    }
+    
+    func didFail(with error: Error) {
+        print("---DIDFAIL AT AUTHENTICATION", error)
+    }
+    
+    // MARK: - Unwind
+    @IBAction func unwindToLogin(_ unwindSegue: UIStoryboardSegue) {
+    }
 }
 
-func plistValues(bundle: Bundle) -> (clientId: String, domain: String)? {
+private func plistValues(bundle: Bundle) -> (clientId: String, domain: String)? {
     guard
         let path = bundle.path(forResource: "Auth0", ofType: "plist"),
         let values = NSDictionary(contentsOfFile: path) as? [String: Any]
