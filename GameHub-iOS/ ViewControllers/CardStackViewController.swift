@@ -129,7 +129,6 @@ extension CardStackViewController: KolodaViewDelegate {
     
     func koloda(_ koloda: KolodaView, didSwipeCardAt index: Int, in direction: SwipeResultDirection) {
         let currentParty = parties[index]
-        print(currentParty)
         if direction == .left {
             networkManager.declineParty(partyId: currentParty.id!, userId: loggedInUser.id!)
         } else if direction == .right {

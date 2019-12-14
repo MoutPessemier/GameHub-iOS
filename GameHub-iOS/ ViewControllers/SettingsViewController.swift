@@ -45,17 +45,17 @@ class SettingsViewController: UIViewController, NetworkManagerDelegate {
 //            .clearSession(federated:false){
 //                switch $0{
 //                case true:
-//                    SessionManager.shared.logout { (error) in
-//                        if let error = error {
-//                            print("---LOGOUT---", error, error.localizedDescription)
-//                            DispatchQueue.main.async {
-//                                Loaf.init("Something went wrong, try again!", state: .error, location: .bottom, presentingDirection: .vertical, dismissingDirection: .vertical, sender: self).show()
-//                            }
-//                        }
-//                        DispatchQueue.main.async {
-//                            self.performSegue(withIdentifier: "unwindToLogin", sender: self)
-//                        }
-//                    }
+        SessionManager.shared.logout { (error) in
+            if let error = error {
+                print("---LOGOUT---", error, error.localizedDescription)
+                DispatchQueue.main.async {
+                    Loaf.init("Something went wrong, try again!", state: .error, location: .bottom, presentingDirection: .vertical, dismissingDirection: .vertical, sender: self).show()
+                }
+            }
+            DispatchQueue.main.async {
+                self.performSegue(withIdentifier: "unwindToLogin", sender: self)
+            }
+        }
 //                case false:
 //                    DispatchQueue.main.async {
 //                        Loaf("Something went wrong, please try again!", state: .error, location: .bottom, presentingDirection: .vertical, dismissingDirection: .vertical, sender: self).show()

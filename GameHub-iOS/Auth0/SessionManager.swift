@@ -63,7 +63,6 @@ class SessionManager {
             .start { (result) in
                 switch result {
                 case .success(let meta):
-                    print(meta.values)
                     self.metadata = (meta["user_metadata"] as! ManagementObject)
                     callback(nil)
                 case .failure(let error):

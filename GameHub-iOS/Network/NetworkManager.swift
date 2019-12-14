@@ -17,8 +17,7 @@ protocol NetworkManagerDelegate {
 }
 
 struct NetworkManager {
-    //let url = "https://game-hub-backend.herokuapp.com/"
-    let url = "https://a697d0d9.ngrok.io/"
+    let url = "https://game-hub-backend.herokuapp.com/"
     
     var delegate: NetworkManagerDelegate?
     
@@ -214,8 +213,8 @@ struct NetworkManager {
                 if let safeData = data {
                     let decoder  = JSONDecoder()
                     do {
-                        let decodedUser = try decoder.decode(User.self, from: safeData)
-                        self.delegate?.updateUser(self, decodedUser)
+                        let decodedUserContainer = try decoder.decode(UserNetworkContainer.self, from: safeData)
+                        self.delegate?.updateUser(self, decodedUserContainer.user)
                     } catch {
                         self.delegate?.didFail(with: error)
                     }
