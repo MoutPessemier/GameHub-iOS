@@ -1,11 +1,13 @@
 # GameHub - IOS version
 
 ## Screenshots
-<img src="./Screenshots/login.png" width="200" />
-<img src="./Screenshots/cardstack.png" width="200" />
-<img src="./Screenshots/partyoverview.png" width="200" />
-<img src="./Screenshots/map.png" width="200" />
-<img src="./Screenshots/settings.png" width="200" />
+<p align="center">
+<img src="./Screenshots/login.png" width="250" />
+<img src="./Screenshots/cardstack.png" width="250" />
+<img src="./Screenshots/partyoverview.png" width="250" />
+<img src="./Screenshots/map.png" width="250" />
+<img src="./Screenshots/settings.png" width="250" />
+</p>
 
 ## Description:
 
