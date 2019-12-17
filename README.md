@@ -1,5 +1,12 @@
 # GameHub - IOS version
 
+## Screenshots
+<img src="./Screenshots/login.png" width="200" />
+<img src="./Screenshots/cardstack.png" width="200" />
+<img src="./Screenshots/partyoverview.png" width="200" />
+<img src="./Screenshots/map.png" width="200" />
+<img src="./Screenshots/settings.png" width="200" />
+
 ## Description:
 
 This app is made for those who like to play (board)games but need others to play with them. As a user you will be able to create a game party to play with others or join an already existing party. In doing so, you will meet new people and have lots of fun!
