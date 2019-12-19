@@ -5,6 +5,7 @@
 //  Created by Mout Pessemier on 07/12/2019.
 //  Copyright © 2019 Digitized. All rights reserved.
 //
+// Based on: https://stackoverflow.com/questions/28016578/how-to-create-a-date-time-stamp-and-format-as-iso-8601-rfc-3339-utc-time-zone
 
 import Foundation
 
