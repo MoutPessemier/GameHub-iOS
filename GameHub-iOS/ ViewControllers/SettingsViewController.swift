@@ -40,11 +40,6 @@ class SettingsViewController: UIViewController, NetworkManagerDelegate {
     
     // MARK: - Auth0
     @IBAction private func logout(_ sender: Any) {
-//        Auth0
-//            .webAuth()
-//            .clearSession(federated:false){
-//                switch $0{
-//                case true:
         SessionManager.shared.logout { (error) in
             if let error = error {
                 print("---LOGOUT---", error, error.localizedDescription)
@@ -56,12 +51,6 @@ class SettingsViewController: UIViewController, NetworkManagerDelegate {
                 self.performSegue(withIdentifier: "unwindToLogin", sender: self)
             }
         }
-//                case false:
-//                    DispatchQueue.main.async {
-//                        Loaf("Something went wrong, please try again!", state: .error, location: .bottom, presentingDirection: .vertical, dismissingDirection: .vertical, sender: self).show()
-//                    }
-//                }
-//        }
     }
     
     @IBAction private func saveChanges(_ sender: Any) {

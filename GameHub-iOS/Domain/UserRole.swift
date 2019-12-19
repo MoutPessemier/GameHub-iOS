@@ -9,7 +9,6 @@
 import Foundation
 
 enum UserRole: String, Codable {
-    
     case owner = "OWNER"
     case admin = "ADMIN"
     case user = "USER"

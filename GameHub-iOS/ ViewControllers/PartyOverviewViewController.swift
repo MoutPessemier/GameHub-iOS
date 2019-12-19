@@ -18,7 +18,7 @@ class PartyOverviewViewController: UIViewController, NetworkManagerDelegate {
     
     @IBOutlet private var tableView: UITableView!
     @IBOutlet private var animationView: AnimationView!
-
+    
     // MARK: - LifeCycle
     override func viewDidLoad() {
         super.viewDidLoad()

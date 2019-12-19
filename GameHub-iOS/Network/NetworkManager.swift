@@ -24,13 +24,11 @@ struct NetworkManager {
     // MARK: - Games
     func getGames() {
         let urlString = "\(url)games"
-        print("URL:", urlString)
         performGetRequest(with: urlString) {data, response, error in
             if error != nil {
                 self.delegate?.didFail(with: error!)
                 return
             }
-            
             if let safeData = data {
                 let decoder = JSONDecoder()
                 do {
@@ -47,13 +45,11 @@ struct NetworkManager {
     
     func getPartiesNearYou(maxDistance: Int, userId: String, latitude: Double, longitude: Double) {
         let urlString = "\(url)getPartiesNearYou?distance=\(maxDistance)&lat=\(latitude)&long=\(longitude)&userId=\(userId)"
-        print("URL:", urlString)
         performGetRequest(with: urlString) {data, response, error in
             if error != nil {
                 self.delegate?.didFail(with: error!)
                 return
             }
-            
             if let safeData = data {
                 let decoder = JSONDecoder()
                 decoder.dateDecodingStrategy = .iso8601withFractionalSeconds
@@ -70,13 +66,11 @@ struct NetworkManager {
     
     func getJoinedParties(userId: String) {
         let urlString = "\(url)getJoinedParties?userId=\(userId)"
-        print("URL:", urlString)
         performGetRequest(with: urlString) { (data, response, error) in
             if error != nil {
                 self.delegate?.didFail(with: error!)
                 return
             }
-            
             if let safeData = data {
                 let decoder = JSONDecoder()
                 decoder.dateDecodingStrategy = .iso8601withFractionalSeconds
@@ -92,7 +86,6 @@ struct NetworkManager {
     
     func joinParty(partyId: String, userId: String) {
         let urlString = "\(url)joinParty"
-        print("URL:", urlString)
         let encoder = JSONEncoder()
         encoder.dateEncodingStrategy = .iso8601withFractionalSeconds
         let partyIdentifier = PartyIdentifierDTO(partyId: partyId, userId: userId)
@@ -103,15 +96,11 @@ struct NetworkManager {
                     self.delegate?.didFail(with: error!)
                     return
                 }
-                
-                //might not need this part
                 if let safeData = data {
                     let decoder = JSONDecoder()
                     decoder.dateDecodingStrategy = .iso8601withFractionalSeconds
                     do {
-                        let temp = try decoder.decode(Party.self, from: safeData)
-                        print(temp)
-                        // only joinedParties need to be updated --> get that list from the backend
+                        let _ = try decoder.decode(Party.self, from: safeData)
                     } catch {
                         self.delegate?.didFail(with: error)
                     }
@@ -124,7 +113,6 @@ struct NetworkManager {
     
     func declineParty(partyId: String, userId: String) {
         let urlString = "\(url)declineParty"
-        print("URL:", urlString)
         let encoder = JSONEncoder()
         encoder.dateEncodingStrategy = .iso8601withFractionalSeconds
         let partyIdentifier = PartyIdentifierDTO(partyId: partyId, userId: userId)
@@ -135,15 +123,11 @@ struct NetworkManager {
                     self.delegate?.didFail(with: error!)
                     return
                 }
-                
-                //might not need this part
                 if let safeData = data {
                     let decoder = JSONDecoder()
                     decoder.dateDecodingStrategy = .iso8601withFractionalSeconds
                     do {
-                        let temp = try decoder.decode(Party.self, from: safeData)
-                        print(temp)
-                        // only declinedParties need to be updated --> get that list from the backend
+                        let _ = try decoder.decode(Party.self, from: safeData)
                     } catch {
                         self.delegate?.didFail(with: error)
                     }
@@ -158,13 +142,11 @@ struct NetworkManager {
     
     func doesUserExist(email: String) {
         let urlString = "\(url)doesUserExist?email=\(email)"
-        print("URL:", urlString)
         performGetRequest(with: urlString) { (data, response, error) in
             if error != nil {
                 self.delegate?.didFail(with: error!)
                 return
             }
-            
             if let safeData = data {
                 let decoder = JSONDecoder()
                 do {
@@ -179,13 +161,11 @@ struct NetworkManager {
     
     func getUser(email: String) {
         let urlString = "\(url)getUserByEmail?email=\(email)"
-        print("URL:", urlString)
         performGetRequest(with: urlString) { data, response, error in
             if error != nil {
                 self.delegate?.didFail(with: error!)
                 return
             }
-            
             if let safeData = data {
                 let decoder = JSONDecoder()
                 do {
@@ -200,7 +180,6 @@ struct NetworkManager {
     
     func updateUser(user: User) {
         let urlString = "\(url)updateUser"
-        print("URL:", urlString)
         let encoder = JSONEncoder()
         do {
             let encodedData = try encoder.encode(user)
@@ -209,7 +188,6 @@ struct NetworkManager {
                     self.delegate?.didFail(with: error!)
                     return
                 }
-                
                 if let safeData = data {
                     let decoder  = JSONDecoder()
                     do {
@@ -227,7 +205,6 @@ struct NetworkManager {
     
     func register(registerDTO: RegisterDTO) {
         let urlString = "\(url)register"
-        print("URL:", urlString)
         let encoder = JSONEncoder()
         do {
             let encodedData = try encoder.encode(registerDTO)
@@ -236,7 +213,6 @@ struct NetworkManager {
                     self.delegate?.didFail(with: error!)
                     return
                 }
-                
                 if let safeData = data {
                     let decoder = JSONDecoder()
                     do {
@@ -254,7 +230,6 @@ struct NetworkManager {
     
     func login(loginDTO: LoginDTO) {
         let urlString = "\(url)login"
-        print("URL:", urlString)
         let encoder = JSONEncoder()
         do {
             let encodedData = try encoder.encode(loginDTO)
@@ -262,7 +237,6 @@ struct NetworkManager {
                 if error != nil {
                     self.delegate?.didFail(with: error!)
                 }
-                
                 if let safeData = data {
                     let decoder = JSONDecoder()
                     do {

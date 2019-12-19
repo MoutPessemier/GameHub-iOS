@@ -15,7 +15,7 @@ class SwipeOverlay: OverlayView {
     private let overlayRightImageName = "overlayLike"
     
     private let overlayImageView = UIImageView()
-
+    
     override var overlayState: SwipeResultDirection? {
         didSet {
             switch overlayState {

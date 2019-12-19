@@ -19,7 +19,7 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, NetworkMan
     private var parties: [Party] = []
     
     @IBOutlet var map: MKMapView!
-
+    
     
     // MARK: - LifeCycle
     override func viewDidLoad() {
@@ -60,7 +60,7 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, NetworkMan
         guard let locValue: CLLocationCoordinate2D = manager.location?.coordinate else { return }
         let currentLocation = CLLocation(latitude: locValue.latitude, longitude: locValue.longitude)
         centerMap(currentLocation)
-        networkManager.getPartiesNearYou(maxDistance: 100, userId: loggedInUser.id!, latitude: locValue.latitude, longitude: locValue.longitude)
+        networkManager.getPartiesNearYou(maxDistance: loggedInUser.maxDistance, userId: loggedInUser.id!, latitude: locValue.latitude, longitude: locValue.longitude)
     }
     
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {

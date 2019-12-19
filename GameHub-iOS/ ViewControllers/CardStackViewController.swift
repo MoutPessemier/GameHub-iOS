@@ -123,10 +123,6 @@ extension CardStackViewController: KolodaViewDelegate {
         lblNoParties.isHidden = false
     }
     
-    func koloda(_ koloda: KolodaView, didSelectCardAt index: Int) {
-        print("---DIDSELECTCARDAT---", index)
-    }
-    
     func koloda(_ koloda: KolodaView, didSwipeCardAt index: Int, in direction: SwipeResultDirection) {
         let currentParty = parties[index]
         if direction == .left {

@@ -9,7 +9,6 @@
 import Foundation
 
 enum GameType: String, Codable {
-    
     case boardGame = "BOARD_GAME"
     case cardGame = "CARD_GAME"
     case videoGame = "VIDEO_GAME"

@@ -25,7 +25,7 @@ public struct Game: Codable {
         self.requirements = requirements
         self.type = type
     }
-
+    
     enum CodingKeys: String, CodingKey {
         case id = "_id"
         case name

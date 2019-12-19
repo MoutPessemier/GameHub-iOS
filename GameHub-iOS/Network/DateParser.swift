@@ -37,8 +37,7 @@ extension JSONDecoder.DateDecodingStrategy {
         let container = try $0.singleValueContainer()
         let string = try container.decode(String.self)
         guard let date = Formatter.iso8601.date(from: string) else {
-            throw DecodingError.dataCorruptedError(in: container,
-                  debugDescription: "Invalid date: " + string)
+            throw DecodingError.dataCorruptedError(in: container, debugDescription: "Invalid date: " + string)
         }
         return date
     }

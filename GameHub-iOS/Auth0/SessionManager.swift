@@ -40,20 +40,6 @@ class SessionManager {
         }
     }
     
-    func renewAuth(_ callback: @escaping (Error?) -> ()) {
-        // Check it is possible to return credentials before asking for Touch
-        guard self.credentialsManager.hasValid() else {
-            return callback(CredentialsManagerError.noCredentials)
-        }
-        self.credentialsManager.credentials { error, credentials in
-            guard error == nil, let credentials = credentials else {
-                return callback(error)
-            }
-            self.credentials = credentials
-            callback(nil)
-        }
-    }
-    
     func getMetaData(_ callback: @escaping (Error?) -> ()) {
         guard let accessToken = self.credentials?.accessToken
             else { return callback(CredentialsManagerError.noCredentials) }

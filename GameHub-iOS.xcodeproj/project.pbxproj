@@ -11,7 +11,6 @@
 		471BEE28DD9396B2DE74ECAA /* Pods_GameHub_iOS_GameHub_iOSUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EA9361EB26749185FB1634F3 /* Pods_GameHub_iOS_GameHub_iOSUITests.framework */; };
 		4E2349BE239ECC89003AB6DD /* loading_infinity.json in Resources */ = {isa = PBXBuildFile; fileRef = 4E2349BD239ECC89003AB6DD /* loading_infinity.json */; };
 		4E3EE1A92399AFE1006E1670 /* PartyIdentifierDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E3EE1A82399AFE1006E1670 /* PartyIdentifierDTO.swift */; };
-		4E3EE1AD239A5DAA006E1670 /* Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E3EE1AC239A5DAA006E1670 /* Card.swift */; };
 		4E48CC572393B6FD009680DD /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E48CC562393B6FD009680DD /* MapViewController.swift */; };
 		4E7B51BD23A29D400005CF46 /* SessionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E7B51BC23A29D400005CF46 /* SessionManager.swift */; };
 		4E7EE054238C20FC0070FC1D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E7EE053238C20FC0070FC1D /* AppDelegate.swift */; };
@@ -69,7 +68,6 @@
 		3364BE83858D84A09431AED2 /* Pods-GameHub-iOSTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GameHub-iOSTests.release.xcconfig"; path = "Target Support Files/Pods-GameHub-iOSTests/Pods-GameHub-iOSTests.release.xcconfig"; sourceTree = "<group>"; };
 		4E2349BD239ECC89003AB6DD /* loading_infinity.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = loading_infinity.json; sourceTree = "<group>"; };
 		4E3EE1A82399AFE1006E1670 /* PartyIdentifierDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PartyIdentifierDTO.swift; sourceTree = "<group>"; };
-		4E3EE1AC239A5DAA006E1670 /* Card.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Card.swift; sourceTree = "<group>"; };
 		4E48CC562393B6FD009680DD /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		4E7B51BC23A29D400005CF46 /* SessionManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionManager.swift; sourceTree = "<group>"; };
 		4E7EE050238C20FC0070FC1D /* GameHub-iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "GameHub-iOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -228,7 +226,6 @@
 			children = (
 				4EAC10C3238D2DB10092D423 /* PartyTableViewCell.swift */,
 				4EAC10C4238D2DB10092D423 /* PartyTableViewCell.xib */,
-				4E3EE1AC239A5DAA006E1670 /* Card.swift */,
 				4EA0D792239BC2470044A245 /* SwipeOverlay.swift */,
 			);
 			path = Views;
@@ -549,7 +546,6 @@
 				4EAC10BD238D1BB20092D423 /* UserRole.swift in Sources */,
 				4EC71ADD2393163C00F2FA1A /* Location.swift in Sources */,
 				4EDC2EA723A4E56B003A0CB8 /* RegisterDTO.swift in Sources */,
-				4E3EE1AD239A5DAA006E1670 /* Card.swift in Sources */,
 				4E7EE054238C20FC0070FC1D /* AppDelegate.swift in Sources */,
 				4EAC10B9238D1B8B0092D423 /* Party.swift in Sources */,
 				4E48CC572393B6FD009680DD /* MapViewController.swift in Sources */,

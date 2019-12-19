@@ -9,7 +9,7 @@
 import UIKit
 
 class PartyTableViewCell: UITableViewCell {
-
+    
     @IBOutlet var partyName: UILabel!
     @IBOutlet var partyDate: UILabel!
     @IBOutlet var gameName: UILabel!
@@ -17,7 +17,7 @@ class PartyTableViewCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
     }
-
+    
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
     }
