@@ -60,7 +60,7 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, NetworkMan
         guard let locValue: CLLocationCoordinate2D = manager.location?.coordinate else { return }
         let currentLocation = CLLocation(latitude: locValue.latitude, longitude: locValue.longitude)
         centerMap(currentLocation)
-        networkManager.getPartiesNearYou(maxDistance: loggedInUser.maxDistance, userId: loggedInUser.id!, latitude: locValue.latitude, longitude: locValue.longitude)
+        networkManager.getJoinedParties(userId: loggedInUser.id!)
     }
     
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {

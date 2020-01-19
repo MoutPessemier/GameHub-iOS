@@ -61,7 +61,7 @@ class CardStackViewController: UIViewController, CLLocationManagerDelegate, Netw
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         guard let locValue: CLLocationCoordinate2D = manager.location?.coordinate else { return }
-        networkManager.getPartiesNearYou(maxDistance: 100, userId: loggedInUser.id!, latitude: locValue.latitude, longitude: locValue.longitude)
+        networkManager.getPartiesNearYou(maxDistance: loggedInUser.maxDistance, userId: loggedInUser.id!, latitude: locValue.latitude, longitude: locValue.longitude)
     }
     
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {

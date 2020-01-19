@@ -64,12 +64,20 @@ class SessionManager {
     }
     
     func logout(_ callback: @escaping (Error?) -> Void) {
-        // Remove credentials from KeyChain
-        self.credentials = nil
-        self.profile = nil
-        self.user = nil
-        self.metadata = nil
-        self.credentialsManager.revoke(callback)
+        Auth0.webAuth().clearSession(federated: false) {
+            switch $0 {
+            case true:
+                // Remove credentials from KeyChain
+                self.credentials = nil
+                self.profile = nil
+                self.user = nil
+                self.metadata = nil
+                self.credentialsManager.revoke(callback)
+            case false:
+                print("---LOGOUT FAILED---")
+            }
+        }
+        
     }
 }
 

@@ -55,7 +55,6 @@ struct NetworkManager {
                 decoder.dateDecodingStrategy = .iso8601withFractionalSeconds
                 do {
                     let decodedContainer = try decoder.decode(PartiesNetworkContainer.self, from: safeData)
-                    
                     self.delegate?.updateParties(self, decodedContainer.parties)
                 } catch {
                     self.delegate?.didFail(with: error)

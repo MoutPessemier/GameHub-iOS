@@ -48,6 +48,7 @@ class AuthenticationViewController: UIViewController, NetworkManagerDelegate {
                                 SessionManager.shared.getMetaData { (error) in
                                     if let error = error {
                                         print("---GETMETADATA---", error)
+                                        return
                                     }
                                     self.networkManager.doesUserExist(email: SessionManager.shared.profile!.name!)
                                 }
