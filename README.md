@@ -33,5 +33,3 @@ Password: P@ssword1111
  - [Backend](https://github.com/MoutPessemier/GameHub-Backend-Express)
  - [Twitter](https://twitter.com/MoutPessemier)
  - [LinkedIn](https://www.linkedin.com/in/moutpessemier/)
-
-Copyright 2019 © by Mout Pessemier
